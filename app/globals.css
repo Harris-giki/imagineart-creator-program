@@ -78,6 +78,11 @@ html, body {
   to { transform: rotate(360deg); }
 }
 
+@keyframes ia-gradient-flow {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
 @keyframes ia-twinkle {
   0%, 100% { opacity: .5; }
   50%       { opacity: 1; }

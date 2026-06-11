@@ -59,7 +59,18 @@ export default function Hero() {
           }}
         >
           <span style={{ display: 'block', whiteSpace: 'nowrap' }}>Showcasing future-shaping</span>
-          <span style={{ display: 'block' }}>creative minds</span>
+          <span
+            style={{
+              display: 'block',
+              fontWeight: 300,
+              background: 'linear-gradient(95deg, #FFD4A8, #F9B8D4, #C8AAFF, #FFD4A8, #F9B8D4)',
+              backgroundSize: '300% 100%',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              animation: 'ia-gradient-flow 6s linear infinite',
+            }}
+          >creative minds</span>
         </h1>
 
         <p

@@ -44,6 +44,18 @@ export default function Nav() {
               {l.label}
             </a>
           ))}
+          <a
+            className="ia-events-link"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '8px', height: '8px' }}>
+              <span style={{ position: 'absolute', width: '8px', height: '8px', borderRadius: '50%', background: '#8A3FFC', animation: 'ia-pulse 2s cubic-bezier(.455,.03,.515,.955) infinite' }} />
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#8A3FFC', flexShrink: 0 }} />
+            </span>
+            Events
+          </a>
         </div>
 
         {/* Right actions */}
@@ -65,19 +77,6 @@ export default function Nav() {
             }}
           >
             Launch app
-          </a>
-
-          <a
-            className="ia-events-link"
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '8px', height: '8px' }}>
-              <span style={{ position: 'absolute', width: '8px', height: '8px', borderRadius: '50%', background: '#8A3FFC', animation: 'ia-pulse 2s cubic-bezier(.455,.03,.515,.955) infinite' }} />
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#8A3FFC', flexShrink: 0 }} />
-            </span>
-            Events
           </a>
 
           <a
