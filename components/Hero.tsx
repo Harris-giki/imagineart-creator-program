@@ -37,6 +37,7 @@ export default function Hero() {
 
       {/* Centered content */}
       <div
+        className="ia-hero-content"
         style={{
           position: 'relative',
           zIndex: 1,

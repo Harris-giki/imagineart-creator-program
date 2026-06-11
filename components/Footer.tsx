@@ -40,6 +40,7 @@ const socials = [
 export default function Footer() {
   return (
     <footer
+      className="ia-footer-pad"
       style={{
         padding: '56px 40px 40px',
         background: '#F8F8F8',

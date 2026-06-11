@@ -2,8 +2,9 @@ import RevealWrapper from './RevealWrapper'
 
 export default function Enterprise() {
   return (
-    <section style={{ padding: '0 40px 96px' }}>
+    <section className="ia-enterprise-outer" style={{ padding: '0 40px 96px' }}>
       <RevealWrapper
+        className="ia-enterprise-inner"
         style={{
           maxWidth: '1200px',
           margin: '0 auto',

@@ -4,7 +4,8 @@ export default function Community() {
   return (
     <section
       id="community"
-      style={{ padding: '100px 40px', background: '#fff', overflow: 'hidden' }}
+      className="ia-sec"
+      style={{ background: '#fff', overflow: 'hidden' }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <RevealWrapper style={{ marginBottom: '44px' }}>
@@ -23,7 +24,7 @@ export default function Community() {
           </h2>
         </RevealWrapper>
 
-        <RevealWrapper style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '22px' }}>
+        <RevealWrapper className="ia-community-grid">
           {/* Host an event card */}
           <div
             style={{

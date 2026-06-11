@@ -49,7 +49,8 @@ export default function WhatYoullGet() {
   return (
     <section
       id="rewards"
-      style={{ padding: '100px 40px', background: '#fff' }}
+      className="ia-sec"
+      style={{ background: '#fff' }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <RevealWrapper style={{ marginBottom: '52px', textAlign: 'center' }}>
@@ -78,13 +79,7 @@ export default function WhatYoullGet() {
         </RevealWrapper>
 
         <RevealWrapper>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '16px',
-            }}
-          >
+          <div className="ia-grid-2col">
             {benefits.map((b, i) => (
               <div
                 key={i}

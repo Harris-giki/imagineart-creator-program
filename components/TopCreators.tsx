@@ -15,7 +15,8 @@ export default function TopCreators() {
   return (
     <section
       id="creators"
-      style={{ padding: '100px 40px', background: '#F8F8F8', textAlign: 'center' }}
+      className="ia-sec"
+      style={{ background: '#F8F8F8', textAlign: 'center' }}
     >
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <RevealWrapper style={{ marginBottom: '60px' }}>
@@ -45,14 +46,7 @@ export default function TopCreators() {
         </RevealWrapper>
 
         <RevealWrapper>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '36px 24px',
-              marginBottom: '60px',
-            }}
-          >
+          <div className="ia-grid-4col" style={{ marginBottom: '60px' }}>
             {creators.map((c, i) => (
               <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px' }}>
                 <div

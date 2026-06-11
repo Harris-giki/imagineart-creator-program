@@ -8,7 +8,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(-1)
 
   return (
-    <section id="faq" style={{ padding: '80px 40px 96px' }}>
+    <section id="faq" className="ia-sec-sm" style={{ paddingBottom: '96px' }}>
       <div style={{ maxWidth: '840px', margin: '0 auto' }}>
         <RevealWrapper style={{ marginBottom: '52px' }}>
           <h2

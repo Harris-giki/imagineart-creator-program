@@ -3,7 +3,7 @@ import { tiles } from '@/lib/data'
 
 export default function CommunityCreations() {
   return (
-    <section style={{ padding: '80px 40px', background: '#fff' }}>
+    <section className="ia-sec-sm" style={{ background: '#fff' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <RevealWrapper style={{ textAlign: 'center', marginBottom: '48px' }}>
           <h2
@@ -33,13 +33,7 @@ export default function CommunityCreations() {
         </RevealWrapper>
 
         <RevealWrapper>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(4, 1fr)',
-              gap: '12px',
-            }}
-          >
+          <div className="ia-grid-4col-tight">
             {tiles.map((t, i) => (
               <div
                 key={i}

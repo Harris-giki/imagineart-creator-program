@@ -68,6 +68,7 @@ export default function StatsBand() {
           display: 'grid',
           gridTemplateColumns: 'repeat(3,1fr)',
           gap: '20px',
+          justifyItems: 'center',
           borderTop: '1px solid #EBEBEB',
           paddingTop: '52px',
         }}

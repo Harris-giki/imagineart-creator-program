@@ -5,10 +5,8 @@ export default function WhoItsFor() {
   return (
     <section
       id="who"
-      style={{
-        padding: '80px 40px',
-        background: '#F8F8F8',
-      }}
+      className="ia-sec-sm"
+      style={{ background: '#F8F8F8' }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <RevealWrapper style={{ textAlign: 'center', marginBottom: '52px' }}>
@@ -27,13 +25,7 @@ export default function WhoItsFor() {
           </h2>
         </RevealWrapper>
 
-        <RevealWrapper
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3,1fr)',
-            gap: '22px',
-          }}
-        >
+        <RevealWrapper className="ia-grid-3col">
           {personas.map((p, i) => (
             <div
               key={i}
