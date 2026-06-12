@@ -28,6 +28,9 @@ export interface Pin {
 export interface FaqItem {
   q: string
   a: string
+  linkText?: string
+  linkHref?: string
+  tallyId?: string
 }
 
 export const tiles: Tile[] = [
@@ -185,7 +188,9 @@ export const faqData: FaqItem[] = [
   },
   {
     q: "How do the monthly credits and bonuses work?",
-    a: "Every active partner gets a 20,000 base refill. You earn performance bonuses across Instagram and TikTok, X, LinkedIn, and Reddit based on real reach, stacking up to a 200,000 monthly cap."
+    a: "Every active partner gets a 20,000 base refill. You earn performance bonuses across Instagram and TikTok, X, LinkedIn, and Reddit based on real reach, stacking up to a 200,000 monthly cap.",
+    linkText: "Learn more →",
+    linkHref: "https://imagineart.notion.site/Credits-Rewards-Guide-2f70152cd769808d958bfde1f401fd67"
   },
   {
     q: "What are the minimum requirements to stay active?",
@@ -197,6 +202,20 @@ export const faqData: FaqItem[] = [
   },
   {
     q: "Are there brand guidelines I should follow?",
-    a: "Keep it sharp, precise, and sophisticated. Speak to professionals while staying welcoming to beginners. Highlight control, speed, and the all-in-one platform. Keep visuals minimal and high quality. You are a partner, not an employee. Represent that relationship accurately and disclose clearly."
+    a: "Keep it sharp, precise, and sophisticated. Speak to professionals while staying welcoming to beginners. Highlight control, speed, and the all-in-one platform. Keep visuals minimal and high quality. You are a partner, not an employee. Represent that relationship accurately and disclose clearly. Brand assets are available here:",
+    linkText: "Access Brand Assets →",
+    linkHref: "https://drive.google.com/drive/folders/1tX_lOzcytN2_JvBnohjs-3VEsoJcVTWJ"
+  },
+  {
+    q: "Can I organize an event with ImagineArt?",
+    a: "Yes! We partner with creators to co-host workshops, live sessions, meetups, and brand activations. If you'd like to organize an event with ImagineArt — online or in-person — submit a proposal and the team will be in touch.",
+    tallyId: "0Q6GR6",
+    linkText: "Submit an Event Proposal →"
+  },
+  {
+    q: "Is there an affiliate program I can join?",
+    a: "Yes. As a Creator Partner you get access to ImagineArt's affiliate program on Impact — earn 15% recurring commissions with a 30-day cookie window and preferred click attribution. Share your unique link with your audience and monetize your reach. For more info, please click this link:",
+    linkText: "Join the Affiliate Program →",
+    linkHref: "http://app.impact.com/campaign-campaign-info-v2/ImagineArt-Inc.brand"
   }
 ]

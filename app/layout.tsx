@@ -5,6 +5,9 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'ImagineArt Creative Partner Program',
   description: 'Join the partners defining the next era of creativity, powered by ImagineArt.',
+  icons: {
+    icon: '/Group.png',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

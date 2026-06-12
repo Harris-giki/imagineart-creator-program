@@ -30,8 +30,8 @@ const rewards = [
   {
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
-        <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+        <polyline points="17 6 23 6 23 12" />
       </svg>
     ),
     text: '15% revenue share on affiliate referrals via Impact',
@@ -140,27 +140,6 @@ export default function ApplyModal() {
           </svg>
         </button>
 
-        {/* Tag */}
-        <div
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '7px',
-            fontSize: '10.5px',
-            fontWeight: 500,
-            letterSpacing: '.12em',
-            color: '#8A3FFC',
-            background: 'rgba(138,63,252,.08)',
-            border: '1px solid rgba(138,63,252,.18)',
-            borderRadius: '999px',
-            padding: '5px 12px',
-            marginBottom: '18px',
-          }}
-        >
-          <span style={{ width: '5px', height: '5px', borderRadius: '50%', background: '#8A3FFC', flexShrink: 0 }} />
-          CREATIVE PARTNER PROGRAM
-        </div>
-
         {/* Heading */}
         <h2
           style={{
@@ -173,7 +152,7 @@ export default function ApplyModal() {
             paddingRight: '32px',
           }}
         >
-          Join the ImagineArt<br />Creative Partner Program
+          Join the ImagineArt<br />Creator Partner Program
         </h2>
 
         <p
@@ -184,7 +163,7 @@ export default function ApplyModal() {
             margin: '0 0 26px',
           }}
         >
-          Share ImagineArt with your audience and earn through credits, affiliate commissions, and enterprise referral bonuses.
+          Create with ImagineArt, share your work with your audience, and earn through credits and enterprise referral bonuses.
         </p>
 
         {/* Rewards card */}
@@ -256,22 +235,6 @@ export default function ApplyModal() {
           </div>
         </div>
 
-        {/* Affiliate note */}
-        <div
-          style={{
-            fontSize: '13px',
-            color: '#888',
-            lineHeight: 1.6,
-            marginBottom: '24px',
-            padding: '12px 16px',
-            background: '#F8F8F8',
-            borderRadius: '10px',
-            border: '1px solid #EBEBEB',
-          }}
-        >
-          Want to earn through referrals? Join our affiliate program on Impact and start earning 15% revenue share with your unique link.
-        </div>
-
         {/* CTAs */}
         <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
           <button
@@ -287,8 +250,7 @@ export default function ApplyModal() {
               }, 200)
             }}
             style={{
-              flex: 1,
-              minWidth: '160px',
+              width: '100%',
               display: 'inline-flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -305,33 +267,6 @@ export default function ApplyModal() {
           >
             Apply Now
           </button>
-          <a
-            href="http://app.impact.com/campaign-campaign-info-v2/ImagineArt-Inc.brand"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              flex: 1,
-              minWidth: '160px',
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '6px',
-              fontSize: '14.5px',
-              fontWeight: 500,
-              textDecoration: 'none',
-              color: '#8A3FFC',
-              background: 'rgba(138,63,252,.07)',
-              border: '1px solid rgba(138,63,252,.2)',
-              padding: '13px 24px',
-              borderRadius: '999px',
-              textAlign: 'center',
-            }}
-          >
-            Affiliate Program
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M7 17L17 7M7 7h10v10" />
-            </svg>
-          </a>
         </div>
       </div>
       </div>

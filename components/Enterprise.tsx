@@ -45,7 +45,9 @@ export default function Enterprise() {
         </div>
         <a
           className="ia-btn-dark"
-          href="#apply"
+          href="https://vyroai.notion.site/ImagineArt-Enterprise-Referral-Program-Creator-Partners-2ed0152cd76980dea449fa36e1c41569"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
             flex: 'none',
             fontSize: '16px',

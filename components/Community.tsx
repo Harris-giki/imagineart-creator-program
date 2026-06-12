@@ -1,4 +1,12 @@
+'use client'
+
 import RevealWrapper from './RevealWrapper'
+
+declare global {
+  interface Window {
+    Tally?: { openPopup: (id: string, opts?: Record<string, unknown>) => void }
+  }
+}
 
 export default function Community() {
   return (
@@ -61,14 +69,14 @@ export default function Community() {
               >
                 Pitch a workshop, meetup, or creative session in your city. Approved partners get platform credits, speakers, promotion, and sponsorship support to make it real.
               </p>
-              <a
-                className="ia-btn-dark"
-                href="mailto:m.haris@imagine.art"
+              <button
+                onClick={() => window.Tally?.openPopup('0Q6GR6', { layout: 'modal', width: 700, overlay: true, animateClose: true })}
                 style={{
                   display: 'inline-block',
                   fontSize: '15px',
                   fontWeight: 600,
-                  textDecoration: 'none',
+                  cursor: 'pointer',
+                  border: 'none',
                   color: '#0F0F0F',
                   background: '#fff',
                   padding: '13px 26px',
@@ -76,7 +84,7 @@ export default function Community() {
                 }}
               >
                 Submit a proposal
-              </a>
+              </button>
             </div>
           </div>
 
