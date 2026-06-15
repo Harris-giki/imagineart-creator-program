@@ -28,7 +28,7 @@ export default function Community() {
               color: '#161616',
             }}
           >
-            Partners in every timezone.
+            Partners in Every Timezone.
           </h2>
         </RevealWrapper>
 
@@ -56,7 +56,7 @@ export default function Community() {
             />
             <div style={{ position: 'relative' }}>
               <h3 style={{ fontSize: '28px', fontWeight: 500, letterSpacing: '-.015em', margin: '0 0 12px', color: '#fff' }}>
-                Host an event. We fund it.
+                Host an Event. We Fund It.
               </h3>
               <p
                 style={{

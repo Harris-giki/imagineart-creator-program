@@ -26,7 +26,7 @@ export default function FAQ() {
               margin: 0,
             }}
           >
-            Common questions.
+            Common Questions.
           </h2>
         </RevealWrapper>
 

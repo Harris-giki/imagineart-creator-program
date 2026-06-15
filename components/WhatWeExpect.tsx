@@ -34,7 +34,7 @@ export default function WhatWeExpect() {
                 margin: '0 0 20px',
               }}
             >
-              Clear expectations. No fine print.
+              Clear Expectations. No Fine Print.
             </h2>
             <p
               style={{

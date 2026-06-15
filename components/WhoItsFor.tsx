@@ -21,7 +21,7 @@ export default function WhoItsFor() {
               color: '#161616',
             }}
           >
-            Built for three kinds of creative.
+            Built for Three Kinds of Creative.
           </h2>
         </RevealWrapper>
 

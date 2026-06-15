@@ -29,7 +29,7 @@ export default function Enterprise() {
               margin: '0 0 14px',
             }}
           >
-            Know a studio ready to scale on AI?
+            Know a Studio Ready to Scale on AI?
           </h3>
           <p
             style={{

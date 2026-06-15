@@ -63,7 +63,7 @@ export default function WhatYoullGet() {
               margin: '0 0 16px',
             }}
           >
-            What you&apos;ll get.
+            What You&apos;ll Get.
           </h2>
           <p
             style={{

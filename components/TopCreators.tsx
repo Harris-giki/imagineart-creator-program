@@ -30,7 +30,7 @@ export default function TopCreators() {
               color: '#161616',
             }}
           >
-            Meet our top creators.
+            Meet Our Top Creators.
           </h2>
           <p
             style={{
