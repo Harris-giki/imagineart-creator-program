@@ -34,16 +34,16 @@ export interface FaqItem {
 }
 
 export const tiles: Tile[] = [
-  { img: '/community-creations/cc-ghibliglimmers.jpeg', handle: '@ghibliglimmers', name: 'Ghibliglimmers', url: 'https://www.imagine.art/c/ghibliglimmers?asset=aurora-borealis_23599642-3849-45f2-af32-59cddd564490' },
-  { img: '/community-creations/cc-nishitbariya.jpeg', handle: '@nishitbariya', name: 'aiartsensie_', url: 'https://www.imagine.art/c/nishitbariya?asset=saturn-infographic_b8cd17df-a690-41ee-8973-ee03631dd5cc' },
-  { img: '/community-creations/cc-lucidai_x.jpeg', handle: '@lucidai_x', name: 'Lucidai_x', url: 'https://www.imagine.art/c/lucidai_x?asset=birds-in-blossoms_fe1fd8cd-cd3f-42c2-97e3-aabe8eff959b' },
-  { video: '/community-creations/cc-cyborgdigitalart.mp4', handle: '@cyborgdigitalart', name: 'Cyborg digital art', url: 'https://www.imagine.art/c/cyborgdigitalart?asset=warrior-fire_2378d04f-888a-4975-b8d1-61aa737ccd06' },
-  { img: '/community-creations/cc-chillvibesart.jpeg', handle: '@chillvibesart', name: 'Chillvibesart', url: 'https://www.imagine.art/c/chillvibesart?tab=my-assets&asset=neon-chameleon_3cb9899b-c859-449b-bd55-1d2da03e9e18' },
-  { video: '/community-creations/cc-nishu_ai_art.mp4', handle: '@nishu_ai_art', name: 'Nishu_ai_art', url: 'https://www.imagine.art/community?asset=cozy-evening-escape_019d9115-5d94-77a2-b619-a0b661ec0c5e' },
-  { video: '/community-creations/cc-anivaradigitalart.mp4', handle: '@anivaradigitalart', name: 'Anivara digitalart', url: 'https://www.imagine.art/c/anivaradigitalart?asset=starry-night-wait_923b6ea3-5862-4d07-9f9f-2b42ee2819e0' },
-  { video: '/community-creations/cc-skytrancegirl.mp4', handle: '@skytrancegirl', name: '5925707452', url: 'https://www.imagine.art/c/skytrancegirl?asset=space-station_019e53f4-cc60-7ae1-9807-7b8e8320c029' },
-  { img: '/community-creations/cc-aipromptsmith.jpeg', handle: '@aipromptsmith', name: 'Aipromptsmith', url: 'https://www.imagine.art/c/aipromptsmith?asset=urban-streetwear-style_ed0b6bd2-f692-49d1-89d5-e38351597d8a' },
-  { img: '/community-creations/cc-renoirreborn.jpeg', handle: '@vinayakvispute', name: 'RenoirReborn', url: 'https://www.imagine.art/c/vinayakvispute?asset=cat-in-snow_865c1f54-8481-4dc1-a0c6-39ed40d8bd48' },
+  { img: 'https://cdn.web.imagine.art/imagine-one/test/assets/community-creations/@ghibliglimmers.jpeg', handle: '@ghibliglimmers', name: 'Ghibliglimmers', url: 'https://www.imagine.art/c/ghibliglimmers?asset=aurora-borealis_23599642-3849-45f2-af32-59cddd564490' },
+  { img: 'https://cdn.web.imagine.art/imagine-one/test/assets/community-creations/@nishitbariya.jpeg', handle: '@nishitbariya', name: 'aiartsensie_', url: 'https://www.imagine.art/c/nishitbariya?asset=saturn-infographic_b8cd17df-a690-41ee-8973-ee03631dd5cc' },
+  { img: 'https://cdn.web.imagine.art/imagine-one/test/assets/community-creations/@lucidai_x.jpeg', handle: '@lucidai_x', name: 'Lucidai_x', url: 'https://www.imagine.art/c/lucidai_x?asset=birds-in-blossoms_fe1fd8cd-cd3f-42c2-97e3-aabe8eff959b' },
+  { video: 'https://cdn.web.imagine.art/imagine-one/test/assets/community-creations/@cyborgdigitalart.mp4', handle: '@cyborgdigitalart', name: 'Cyborg digital art', url: 'https://www.imagine.art/c/cyborgdigitalart?asset=warrior-fire_2378d04f-888a-4975-b8d1-61aa737ccd06' },
+  { img: 'https://cdn.web.imagine.art/imagine-one/test/assets/community-creations/@chillvibesart.jpeg', handle: '@chillvibesart', name: 'Chillvibesart', url: 'https://www.imagine.art/c/chillvibesart?tab=my-assets&asset=neon-chameleon_3cb9899b-c859-449b-bd55-1d2da03e9e18' },
+  { video: 'https://cdn.web.imagine.art/imagine-one/test/assets/community-creations/@nishu_ai_art.mp4', handle: '@nishu_ai_art', name: 'Nishu_ai_art', url: 'https://www.imagine.art/community?asset=cozy-evening-escape_019d9115-5d94-77a2-b619-a0b661ec0c5e' },
+  { video: 'https://cdn.web.imagine.art/imagine-one/test/assets/community-creations/@anivaradigitalart.mp4', handle: '@anivaradigitalart', name: 'Anivara digitalart', url: 'https://www.imagine.art/c/anivaradigitalart?asset=starry-night-wait_923b6ea3-5862-4d07-9f9f-2b42ee2819e0' },
+  { video: 'https://cdn.web.imagine.art/imagine-one/test/assets/community-creations/@skytrancegirl.mp4', handle: '@skytrancegirl', name: '5925707452', url: 'https://www.imagine.art/c/skytrancegirl?asset=space-station_019e53f4-cc60-7ae1-9807-7b8e8320c029' },
+  { img: 'https://cdn.web.imagine.art/imagine-one/test/assets/community-creations/@Aipromptsmith.jpeg', handle: '@aipromptsmith', name: 'Aipromptsmith', url: 'https://www.imagine.art/c/aipromptsmith?asset=urban-streetwear-style_ed0b6bd2-f692-49d1-89d5-e38351597d8a' },
+  { img: 'https://cdn.web.imagine.art/imagine-one/test/assets/community-creations/@RenoirReborn.jpeg', handle: '@vinayakvispute', name: 'RenoirReborn', url: 'https://www.imagine.art/c/vinayakvispute?asset=cat-in-snow_865c1f54-8481-4dc1-a0c6-39ed40d8bd48' },
 ]
 
 export const personas: Persona[] = [

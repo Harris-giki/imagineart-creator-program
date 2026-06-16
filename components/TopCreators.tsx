@@ -1,16 +1,16 @@
 import RevealWrapper from './RevealWrapper'
 
 const creators = [
-  { name: 'Iconic_Mind 👑',      handle: '@otamereoyen',          img: '/tc-iconic-mind.png',        url: 'https://www.imagine.art/c/otamereoyen' },
-  { name: 'Aipromptsmith',       handle: '@aipromptsmith',        img: '/tc-aipromptsmith.png',      url: 'https://www.imagine.art/c/aipromptsmith' },
-  { name: '_ai.Creativecraft',   handle: '@promptcraft',          img: '/tc-ai-creativecraft.png',   url: 'https://www.imagine.art/c/promptcraft' },
-  { name: 'Chillvibesart',       handle: '@chillvibesart',        img: '/tc-chillvibesart.png',      url: 'https://www.imagine.art/c/chillvibesart' },
-  { name: 'visual_saga_studios', handle: '@visualsagastudios',    img: '/tc-visual-saga.png',        url: 'https://www.imagine.art/c/visualsagastudios(sairammadaram)' },
-  { name: 'Soumya🍃',            handle: '@soumya🍃',              img: '/tc-soumya.png',             url: 'https://www.imagine.art/c/soumya%F0%9F%8D%83' },
-  { name: 'Warmcorner.ai',       handle: '@warmcorner',           img: '/tc-warmcorner.png',         url: 'https://www.imagine.art/c/warmcorner' },
+  { name: 'Iconic_Mind 👑',      handle: '@otamereoyen',          img: 'https://cdn.web.imagine.art/imagine-one/test/assets/top-creators/Iconic_Mind.png',           url: 'https://www.imagine.art/c/otamereoyen' },
+  { name: 'Aipromptsmith',       handle: '@aipromptsmith',        img: 'https://cdn.web.imagine.art/imagine-one/test/assets/top-creators/Aipromptsmith.png',         url: 'https://www.imagine.art/c/aipromptsmith' },
+  { name: '_ai.Creativecraft',   handle: '@promptcraft',          img: 'https://cdn.web.imagine.art/imagine-one/test/assets/top-creators/_ai.Creativecraft.png',     url: 'https://www.imagine.art/c/promptcraft' },
+  { name: 'Chillvibesart',       handle: '@chillvibesart',        img: 'https://cdn.web.imagine.art/imagine-one/test/assets/top-creators/Chillvibesart.png',         url: 'https://www.imagine.art/c/chillvibesart' },
+  { name: 'visual_saga_studios', handle: '@visualsagastudios',    img: 'https://cdn.web.imagine.art/imagine-one/test/assets/top-creators/visual_saga_studios.png',   url: 'https://www.imagine.art/c/visualsagastudios(sairammadaram)' },
+  { name: 'Soumya🍃',            handle: '@soumya🍃',              img: 'https://cdn.web.imagine.art/imagine-one/test/assets/top-creators/Soumya.png',                url: 'https://www.imagine.art/c/soumya%F0%9F%8D%83' },
+  { name: 'Warmcorner.ai',       handle: '@warmcorner',           img: 'https://cdn.web.imagine.art/imagine-one/test/assets/top-creators/Warmcorner.ai.png',         url: 'https://www.imagine.art/c/warmcorner' },
   { name: 'Digital Art Sensei',  handle: '@abinkurian',           img: '/tc-digital-art-sensei.png', url: 'https://www.imagine.art/c/abinkurian' },
-  { name: 'Nebelschaf_art',      handle: '@nebelschaf_art',       img: '/tc-nebelschaf.png',         url: 'https://www.imagine.art/c/nebelschaf_art' },
-  { name: 'Aura HARVI',          handle: '@auraharvi',            img: '/tc-aura-harvi.png',         url: 'https://www.imagine.art/c/auraharvi' },
+  { name: 'Nebelschaf_art',      handle: '@nebelschaf_art',       img: 'https://cdn.web.imagine.art/imagine-one/test/assets/top-creators/Nebelschaf_art.png',        url: 'https://www.imagine.art/c/nebelschaf_art' },
+  { name: 'Aura HARVI',          handle: '@auraharvi',            img: '/tc-aura-harvi.png',          url: 'https://www.imagine.art/c/auraharvi' },
 ]
 
 export default function TopCreators() {

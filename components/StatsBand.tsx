@@ -11,9 +11,9 @@ interface Stat {
 }
 
 const stats: Stat[] = [
-  { count: 2000, suffix: '+', label: 'Active creators' },
+  { count: 2500, suffix: '+', label: 'Active creators' },
   { count: 4.5, decimals: 1, suffix: 'B+', label: 'Generations' },
-  { count: 45, suffix: '+', label: 'Countries represented' },
+  { count: 145, suffix: '+', label: 'Countries represented' },
 ]
 
 export default function StatsBand() {

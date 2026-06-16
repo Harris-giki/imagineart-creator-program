@@ -47,7 +47,7 @@ export default function Community() {
           >
             {/* Background image */}
             <img
-              src="/event.png"
+              src="https://cdn.web.imagine.art/imagine-one/test/assets/event.png"
               alt=""
               style={{
                 position: 'absolute',

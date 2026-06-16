@@ -13,7 +13,7 @@ import ApplyModal from '@/components/ApplyModal'
 
 export default function Page() {
   return (
-    <main style={{ background: 'var(--clr-bg)', color: 'var(--clr-fg)', overflowX: 'hidden' }}>
+    <main style={{ background: 'var(--clr-bg)', color: 'var(--clr-fg)', overflowX: 'hidden', position: 'relative' }}>
       <Nav />
       <Hero />
       <WhatYoullGet />

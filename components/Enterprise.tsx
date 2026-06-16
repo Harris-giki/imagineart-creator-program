@@ -59,7 +59,7 @@ export default function Enterprise() {
             borderRadius: '999px',
           }}
         >
-          Refer a team
+          Refer a Team
         </a>
       </RevealWrapper>
     </section>

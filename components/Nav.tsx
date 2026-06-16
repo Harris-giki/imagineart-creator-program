@@ -150,7 +150,7 @@ export default function Nav() {
             </a>
 
             <a
-              className="ia-btn-dark"
+              className="ia-btn-dark ia-nav-cta"
               href="#apply"
               style={{
                 fontSize: '14.5px',
@@ -197,6 +197,7 @@ export default function Nav() {
           <a key={l.href} href={l.href} onClick={close}>{l.label}</a>
         ))}
         <a href="https://www.imagine.art" target="_blank" rel="noopener noreferrer" onClick={close}>Launch app</a>
+        <a href="#apply" onClick={close} style={{ fontWeight: 600, color: '#8A3FFC' }}>Apply now</a>
         <a
           href="#"
           target="_blank"
