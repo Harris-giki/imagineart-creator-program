@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <header id="top" style={{ position: 'relative', overflow: 'hidden' }}>
+    <header id="top" style={{ position: 'relative', overflow: 'hidden', marginTop: '57px' }}>
 
       {/* Full image — natural aspect ratio, no cropping */}
       <img
@@ -48,7 +48,7 @@ export default function Hero() {
           <span
             style={{
               display: 'block',
-              fontWeight: 300,
+              fontWeight: 700,
               background: 'linear-gradient(95deg, #FFD4A8, #ffffff, #F9B8D4, #C8AAFF, #ffffff, #FFD4A8)',
               backgroundSize: '300% 100%',
               WebkitBackgroundClip: 'text',
