@@ -277,8 +277,18 @@ html, body {
   gap: 20px;
 }
 
-/* ─── Logo: invert black→white in dark mode ─── */
+/* ─── Logo: invert black→white in dark mode OR floating pill ─── */
 html.dark .ia-logo-img { filter: invert(1); }
+/* Light mode: also invert inside dark floating pill */
+html:not(.dark) .ia-nav-scrolled .ia-logo-img { filter: invert(1); }
+
+/* ─── Floating nav pill — link / icon overrides ─── */
+.ia-nav-scrolled .ia-link,
+.ia-nav-scrolled .ia-events-link { color: rgba(255,255,255,.78) !important; }
+.ia-nav-scrolled .ia-link:hover,
+.ia-nav-scrolled .ia-events-link:hover { color: #fff !important; }
+.ia-nav-scrolled .ia-theme-toggle { color: rgba(255,255,255,.75); }
+.ia-nav-scrolled .ia-theme-toggle:hover { color: #fff; }
 
 /* ─── Nav ─── */
 .ia-nav-links   { display: flex; align-items: center; gap: 26px; }
