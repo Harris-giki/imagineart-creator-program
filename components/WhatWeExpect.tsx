@@ -3,7 +3,7 @@ import { expectations } from '@/lib/data'
 
 export default function WhatWeExpect() {
   return (
-    <section style={{ padding: '96px 40px', background: '#F7F6F9' }}>
+    <section style={{ padding: '96px 40px', background: 'var(--clr-bg-3)' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <RevealWrapper
           style={{
@@ -23,7 +23,7 @@ export default function WhatWeExpect() {
                 marginBottom: '16px',
               }}
             >
-              04 — THE DEAL
+              04 · THE DEAL
             </div>
             <h2
               style={{
@@ -40,7 +40,7 @@ export default function WhatWeExpect() {
               style={{
                 fontSize: '17px',
                 lineHeight: 1.6,
-                color: '#575757',
+                color: 'var(--clr-fg-2)',
                 margin: '0 0 28px',
                 maxWidth: '440px',
               }}
@@ -64,8 +64,8 @@ export default function WhatWeExpect() {
                   display: 'flex',
                   gap: '16px',
                   alignItems: 'flex-start',
-                  background: '#fff',
-                  border: '1px solid #EDEDED',
+                  background: 'var(--clr-card)',
+                  border: '1px solid var(--clr-border)',
                   borderRadius: '16px',
                   padding: '20px 22px',
                 }}
@@ -85,7 +85,7 @@ export default function WhatWeExpect() {
                   <div style={{ fontSize: '16px', fontWeight: 600, marginBottom: '4px' }}>
                     {e.t}
                   </div>
-                  <div style={{ fontSize: '14px', lineHeight: 1.55, color: '#6E6E6E' }}>
+                  <div style={{ fontSize: '14px', lineHeight: 1.55, color: 'var(--clr-fg-2)' }}>
                     {e.d}
                   </div>
                 </div>

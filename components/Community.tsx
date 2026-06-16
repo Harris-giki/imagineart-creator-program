@@ -13,7 +13,7 @@ export default function Community() {
     <section
       id="community"
       className="ia-sec"
-      style={{ background: '#fff', overflow: 'hidden' }}
+      style={{ background: 'var(--clr-bg)', overflow: 'hidden' }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <RevealWrapper style={{ marginBottom: '44px' }}>
@@ -25,7 +25,7 @@ export default function Community() {
               letterSpacing: '-.025em',
               margin: 0,
               maxWidth: '600px',
-              color: '#161616',
+              color: 'var(--clr-fg)',
             }}
           >
             Partners in Every Timezone.
@@ -39,24 +39,37 @@ export default function Community() {
               position: 'relative',
               overflow: 'hidden',
               borderRadius: '22px',
-              padding: '36px',
-              background: 'linear-gradient(120deg,#3a1d6e,#8A3FFC 130%)',
+              padding: '52px 48px',
+              minHeight: '340px',
+              display: 'flex',
+              alignItems: 'flex-end',
             }}
           >
+            {/* Background image */}
+            <img
+              src="/event.png"
+              alt=""
+              style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                objectPosition: 'center',
+                display: 'block',
+              }}
+            />
+            {/* Overlay — lighter so the image breathes */}
             <div
               style={{
                 position: 'absolute',
-                right: '-40px',
-                top: '-40px',
-                width: '240px',
-                height: '240px',
-                borderRadius: '50%',
-                background: 'radial-gradient(circle,rgba(255,133,221,.5),transparent 70%)',
+                inset: 0,
+                background: 'linear-gradient(to top, rgba(10,4,30,.80) 0%, rgba(10,4,30,.38) 55%, rgba(10,4,30,.15) 100%)',
               }}
             />
-            <div style={{ position: 'relative' }}>
+            <div style={{ position: 'relative', width: '100%' }}>
               <h3 style={{ fontSize: '28px', fontWeight: 500, letterSpacing: '-.015em', margin: '0 0 12px', color: '#fff' }}>
-                Host an Event. We Fund It.
+                Host an Event with Us.
               </h3>
               <p
                 style={{
@@ -67,7 +80,7 @@ export default function Community() {
                   margin: '0 0 24px',
                 }}
               >
-                Pitch a workshop, meetup, or creative session in your city. Approved partners get platform credits, speakers, promotion, and sponsorship support to make it real.
+                Pitch a workshop, meetup, or creative session in your city. Approved partners get platform credits, speakers, and ImagineArt promotion to help make it happen.
               </p>
               <button
                 onClick={() => window.Tally?.openPopup('0Q6GR6', { layout: 'modal', width: 700, overlay: true, animateClose: true })}
@@ -92,8 +105,8 @@ export default function Community() {
           <div
             style={{
               borderRadius: '22px',
-              border: '1px solid #E8E8E8',
-              background: '#F8F8F8',
+              border: '1px solid var(--clr-border)',
+              background: 'var(--clr-bg-2)',
               padding: '34px',
               display: 'flex',
               flexDirection: 'column',
@@ -101,18 +114,18 @@ export default function Community() {
             }}
           >
             <div>
-              <div style={{ fontSize: '13px', color: '#888', marginBottom: '6px', letterSpacing: '.06em' }}>
+              <div style={{ fontSize: '13px', color: 'var(--clr-fg-3)', marginBottom: '6px', letterSpacing: '.06em' }}>
                 LIVE EVERY WEEK
               </div>
-              <div style={{ fontSize: '19px', fontWeight: 500, color: '#161616', letterSpacing: '-.015em' }}>
-                3 sessions. Real people. Real answers.
+              <div style={{ fontSize: '19px', fontWeight: 500, color: 'var(--clr-fg)', letterSpacing: '-.015em' }}>
+                3 sessions a week. Real people. Real answers.
               </div>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               {[
-                { day: 'Wed', label: 'Office Hours', detail: '8–9 AM EDT · drop in, ask anything, get help live' },
-                { day: 'Thu', label: 'Imagine with ImagineArt', detail: 'live creative battles with the community' },
-                { day: 'Fri', label: 'Expert Sessions', detail: 'hands-on workflows with Creative Technologists' },
+                { day: 'Wed', label: 'Office Hours', detail: '8–9 AM EDT · the team is live and on-call, ready for your questions, workflows, and ideas' },
+                { day: 'Thu', label: 'Imagine with ImagineArt', detail: '9:30 PM EDT · podcasts with top creators and filmmakers one week, live community challenges the next. Always something fresh.' },
+                { day: 'Fri', label: 'Expert Sessions', detail: '11 AM–12 PM EDT · hands-on with our Creative Technologists: real talk, Film Studio deep-dives, and workflow tips' },
               ].map((s, i) => (
                 <div
                   key={i}
@@ -128,24 +141,24 @@ export default function Community() {
                       width: '42px',
                       height: '42px',
                       borderRadius: '12px',
-                      background: '#fff',
-                      border: '1px solid #E0E0E0',
+                      background: 'var(--clr-card)',
+                      border: '1px solid var(--clr-border)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       fontSize: '11px',
                       fontWeight: 600,
-                      color: '#888',
+                      color: 'var(--clr-fg-3)',
                       letterSpacing: '.04em',
                     }}
                   >
                     {s.day}
                   </div>
                   <div>
-                    <div style={{ fontSize: '14.5px', fontWeight: 500, color: '#161616', marginBottom: '2px' }}>
+                    <div style={{ fontSize: '14.5px', fontWeight: 500, color: 'var(--clr-fg)', marginBottom: '2px' }}>
                       {s.label}
                     </div>
-                    <div style={{ fontSize: '13px', color: '#888', lineHeight: 1.45 }}>
+                    <div style={{ fontSize: '13px', color: 'var(--clr-fg-3)', lineHeight: 1.45 }}>
                       {s.detail}
                     </div>
                   </div>
@@ -163,11 +176,11 @@ export default function Community() {
                 fontSize: '13.5px',
                 fontWeight: 500,
                 textDecoration: 'none',
-                color: '#161616',
+                color: 'var(--clr-fg)',
                 padding: '10px 18px',
                 borderRadius: '999px',
-                border: '1px solid #E0E0E0',
-                background: '#fff',
+                border: '1px solid var(--clr-border)',
+                background: 'var(--clr-card)',
                 alignSelf: 'flex-start',
               }}
             >

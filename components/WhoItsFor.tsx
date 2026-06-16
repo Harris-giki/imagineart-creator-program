@@ -6,7 +6,7 @@ export default function WhoItsFor() {
     <section
       id="who"
       className="ia-sec-sm"
-      style={{ background: '#F8F8F8' }}
+      style={{ background: 'var(--clr-bg-2)' }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <RevealWrapper style={{ textAlign: 'center', marginBottom: '52px' }}>
@@ -18,7 +18,7 @@ export default function WhoItsFor() {
               letterSpacing: '-.025em',
               margin: '0 auto',
               maxWidth: '680px',
-              color: '#161616',
+              color: 'var(--clr-fg)',
             }}
           >
             Built for Three Kinds of Creative.
@@ -33,25 +33,22 @@ export default function WhoItsFor() {
               style={{
                 borderRadius: '22px',
                 overflow: 'hidden',
-                background: '#fff',
-                border: '1px solid #E8E8E8',
+                background: 'var(--clr-card)',
+                border: '1px solid var(--clr-border)',
                 boxShadow: '0 2px 16px rgba(0,0,0,.04)',
               }}
             >
-              <div style={{ position: 'relative', height: '240px', overflow: 'hidden' }}>
-                <div
-                  className="ia-persona-art"
+              <div style={{ position: 'relative', height: '280px', overflow: 'hidden' }}>
+                <img
+                  src={`/who-${i + 1}.png`}
+                  alt={p.title}
                   style={{
                     position: 'absolute',
                     inset: 0,
-                    background: p.bg,
-                  }}
-                />
-                <div
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    background: 'linear-gradient(to top,rgba(255,255,255,.9),transparent 56%)',
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center top',
                   }}
                 />
                 <span
@@ -62,7 +59,7 @@ export default function WhoItsFor() {
                     fontFamily: "'Lemon Milk', sans-serif",
                     fontSize: '34px',
                     fontWeight: 500,
-                    color: 'rgba(255,255,255,.3)',
+                    color: 'rgba(255,255,255,.55)',
                   }}
                 >
                   {p.num}
@@ -75,7 +72,7 @@ export default function WhoItsFor() {
                     fontWeight: 500,
                     letterSpacing: '-.01em',
                     margin: '0 0 12px',
-                    color: '#161616',
+                    color: 'var(--clr-fg)',
                   }}
                 >
                   {p.title}
@@ -84,7 +81,7 @@ export default function WhoItsFor() {
                   style={{
                     fontSize: '14.5px',
                     lineHeight: 1.6,
-                    color: '#6A6A6A',
+                    color: 'var(--clr-fg-2)',
                     margin: 0,
                   }}
                 >

@@ -105,7 +105,7 @@ export default function ApplyModal() {
           maxWidth: '560px',
           maxHeight: '90vh',
           overflowY: 'auto',
-          background: '#fff',
+          background: 'var(--clr-bg)',
           borderRadius: '24px',
           padding: '36px 36px 32px',
           boxShadow: '0 40px 100px rgba(0,0,0,.22)',
@@ -123,13 +123,13 @@ export default function ApplyModal() {
             width: '32px',
             height: '32px',
             borderRadius: '50%',
-            border: '1px solid #E8E8E8',
-            background: '#F8F8F8',
+            border: '1px solid var(--clr-border)',
+            background: 'var(--clr-bg-2)',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            color: '#888',
+            color: 'var(--clr-fg-3)',
             padding: 0,
           }}
           aria-label="Close"
@@ -147,7 +147,7 @@ export default function ApplyModal() {
             fontWeight: 500,
             letterSpacing: '-.025em',
             lineHeight: 1.12,
-            color: '#161616',
+            color: 'var(--clr-fg)',
             margin: '0 0 12px',
             paddingRight: '32px',
           }}
@@ -159,7 +159,7 @@ export default function ApplyModal() {
           style={{
             fontSize: '15px',
             lineHeight: 1.65,
-            color: '#6A6A6A',
+            color: 'var(--clr-fg-2)',
             margin: '0 0 26px',
           }}
         >
@@ -169,39 +169,39 @@ export default function ApplyModal() {
         {/* Rewards card */}
         <div
           style={{
-            background: '#F8F8F8',
-            border: '1px solid #EBEBEB',
+            background: 'var(--clr-bg-2)',
+            border: '1px solid var(--clr-border)',
             borderRadius: '16px',
             padding: '22px 22px 18px',
             marginBottom: '18px',
           }}
         >
-          <div style={{ fontSize: '13px', fontWeight: 500, color: '#161616', marginBottom: '14px', letterSpacing: '-.01em' }}>
+          <div style={{ fontSize: '13px', fontWeight: 500, color: 'var(--clr-fg)', marginBottom: '14px', letterSpacing: '-.01em' }}>
             Rewards
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '11px' }}>
             {rewards.map((r, i) => (
               <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                 <span style={{ color: '#8A3FFC', flexShrink: 0, marginTop: '1px' }}>{r.icon}</span>
-                <span style={{ fontSize: '14px', color: '#444', lineHeight: 1.5 }}>{r.text}</span>
+                <span style={{ fontSize: '14px', color: 'var(--clr-fg-2)', lineHeight: 1.5 }}>{r.text}</span>
               </div>
             ))}
           </div>
 
-          <div style={{ height: '1px', background: '#E4E4E4', margin: '18px 0' }} />
+          <div style={{ height: '1px', background: 'var(--clr-border)', margin: '18px 0' }} />
 
-          <div style={{ fontSize: '13px', fontWeight: 500, color: '#161616', marginBottom: '14px', letterSpacing: '-.01em' }}>
+          <div style={{ fontSize: '13px', fontWeight: 500, color: 'var(--clr-fg)', marginBottom: '14px', letterSpacing: '-.01em' }}>
             Enterprise Referrals
           </div>
           <div
             style={{
               fontSize: '12.5px',
-              color: '#6A6A6A',
+              color: 'var(--clr-fg-2)',
               lineHeight: 1.6,
               marginBottom: '12px',
             }}
           >
-            Refer a qualified enterprise lead and earn <strong style={{ color: '#161616', fontWeight: 500 }}>20% of the signed contract value</strong> as a one-time payout.
+            Refer a qualified enterprise lead and earn <strong style={{ color: 'var(--clr-fg)', fontWeight: 500 }}>20% of the signed contract value</strong> as a one-time payout.
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {bounties.map((b, i) => (
@@ -213,11 +213,11 @@ export default function ApplyModal() {
                   justifyContent: 'space-between',
                   padding: '9px 14px',
                   borderRadius: '10px',
-                  background: '#fff',
-                  border: '1px solid #E8E8E8',
+                  background: 'var(--clr-card)',
+                  border: '1px solid var(--clr-border)',
                 }}
               >
-                <span style={{ fontSize: '13px', color: '#555' }}>{b.deal}</span>
+                <span style={{ fontSize: '13px', color: 'var(--clr-fg-2)' }}>{b.deal}</span>
                 <span
                   style={{
                     fontSize: '12.5px',
@@ -258,8 +258,8 @@ export default function ApplyModal() {
               fontWeight: 500,
               cursor: 'pointer',
               border: 'none',
-              color: '#fff',
-              background: '#161616',
+              color: 'var(--clr-btn-dark-fg)',
+              background: 'var(--clr-btn-dark-bg)',
               padding: '13px 24px',
               borderRadius: '999px',
               textAlign: 'center',

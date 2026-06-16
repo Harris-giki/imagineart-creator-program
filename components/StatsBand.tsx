@@ -58,7 +58,7 @@ export default function StatsBand() {
   }, [])
 
   return (
-    <section style={{ padding: '72px 40px', background: '#fff' }}>
+    <section style={{ padding: '72px 40px', background: 'var(--clr-bg)' }}>
       <div
         ref={containerRef}
         id="ia-stats"
@@ -69,7 +69,7 @@ export default function StatsBand() {
           gridTemplateColumns: 'repeat(3,1fr)',
           gap: '20px',
           justifyItems: 'center',
-          borderTop: '1px solid #EBEBEB',
+          borderTop: '1px solid var(--clr-border)',
           paddingTop: '52px',
         }}
       >
@@ -83,13 +83,13 @@ export default function StatsBand() {
                 fontSize: 'clamp(32px,3.6vw,48px)',
                 fontWeight: 500,
                 letterSpacing: '-.025em',
-                color: s.color ?? '#161616',
+                color: s.color ?? 'var(--clr-fg)',
                 lineHeight: 1,
               }}
             >
               0
             </div>
-            <div style={{ fontSize: '12.5px', color: '#888', marginTop: '8px', lineHeight: 1.4 }}>
+            <div style={{ fontSize: '12.5px', color: 'var(--clr-fg-3)', marginTop: '8px', lineHeight: 1.4 }}>
               {s.label}
             </div>
           </div>

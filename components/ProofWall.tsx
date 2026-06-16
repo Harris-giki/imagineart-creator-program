@@ -1,5 +1,4 @@
 import RevealWrapper from './RevealWrapper'
-import { tiles } from '@/lib/data'
 
 export default function ProofWall() {
   return (
@@ -25,7 +24,7 @@ export default function ProofWall() {
                 marginBottom: '16px',
               }}
             >
-              01 — THE PROOF
+              01 · THE PROOF
             </div>
             <h2
               style={{
@@ -54,7 +53,7 @@ export default function ProofWall() {
         </RevealWrapper>
 
         <RevealWrapper style={{ columns: 4, columnGap: '18px' }}>
-          {tiles.map((t, i) => (
+          {([] as {h:string;bg:string;handle:string;tool:string;prompt:string}[]).map((t, i) => (
             <div
               key={i}
               className="ia-tile"

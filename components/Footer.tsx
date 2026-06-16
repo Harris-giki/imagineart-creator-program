@@ -1,3 +1,5 @@
+import FooterMap from './FooterMap'
+
 const socials = [
   {
     label: 'Discord',
@@ -43,10 +45,15 @@ export default function Footer() {
       className="ia-footer-pad"
       style={{
         padding: '56px 40px 40px',
-        background: '#F8F8F8',
-        borderTop: '1px solid #E8E8E8',
+        background: 'var(--clr-bg-2)',
+        borderTop: '1px solid var(--clr-border)',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
+      {/* World map background — sits behind all footer content */}
+      <FooterMap />
+      <div style={{ position: 'relative', zIndex: 1 }}>
       <div
         style={{
           maxWidth: '1200px',
@@ -63,6 +70,7 @@ export default function Footer() {
             <img
               src="/imagineart-black-logo.png"
               alt="ImagineArt"
+              className="ia-logo-img"
               style={{ height: '22px', width: 'auto', display: 'block' }}
             />
           </div>
@@ -70,7 +78,7 @@ export default function Footer() {
             style={{
               fontSize: '13px',
               lineHeight: 1.6,
-              color: '#888',
+              color: 'var(--clr-fg-3)',
               margin: 0,
             }}
           >
@@ -85,23 +93,23 @@ export default function Footer() {
               style={{
                 fontSize: '12px',
                 letterSpacing: '.12em',
-                color: '#AAA',
+                color: 'var(--clr-fg-3)',
                 marginBottom: '14px',
               }}
             >
               PROGRAM
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <a className="ia-link" href="#who" style={{ fontSize: '14px', color: '#555' }}>
+              <a className="ia-link" href="#who" style={{ fontSize: '14px', color: 'var(--clr-fg-2)' }}>
                 Who it&apos;s for
               </a>
-              <a className="ia-link" href="#rewards" style={{ fontSize: '14px', color: '#555' }}>
+              <a className="ia-link" href="#rewards" style={{ fontSize: '14px', color: 'var(--clr-fg-2)' }}>
                 Rewards
               </a>
-              <a className="ia-link" href="#community" style={{ fontSize: '14px', color: '#555' }}>
+              <a className="ia-link" href="#community" style={{ fontSize: '14px', color: 'var(--clr-fg-2)' }}>
                 Events
               </a>
-              <a className="ia-link" href="#faq" style={{ fontSize: '14px', color: '#555' }}>
+              <a className="ia-link" href="#faq" style={{ fontSize: '14px', color: 'var(--clr-fg-2)' }}>
                 FAQ
               </a>
             </div>
@@ -112,7 +120,7 @@ export default function Footer() {
               style={{
                 fontSize: '12px',
                 letterSpacing: '.12em',
-                color: '#AAA',
+                color: 'var(--clr-fg-3)',
                 marginBottom: '14px',
               }}
             >
@@ -128,14 +136,14 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   style={{
                     fontSize: '14px',
-                    color: '#555',
+                    color: 'var(--clr-fg-2)',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '8px',
                     textDecoration: 'none',
                   }}
                 >
-                  <span style={{ color: '#888', display: 'flex', alignItems: 'center' }}>
+                  <span style={{ color: 'var(--clr-fg-3)', display: 'flex', alignItems: 'center' }}>
                     {s.icon}
                   </span>
                   {s.label}
@@ -152,18 +160,19 @@ export default function Footer() {
           maxWidth: '1200px',
           margin: '36px auto 0',
           paddingTop: '22px',
-          borderTop: '1px solid #E8E8E8',
+          borderTop: '1px solid var(--clr-border)',
           display: 'flex',
           justifyContent: 'space-between',
           gap: '16px',
           flexWrap: 'wrap',
           fontSize: '12.5px',
-          color: '#AAA',
+          color: 'var(--clr-fg-3)',
         }}
       >
         <span>© 2026 ImagineArt, Vyro AI. All rights reserved.</span>
         <span>Creative partnership. Not employment.</span>
       </div>
+      </div>{/* end z-index wrapper */}
     </footer>
   )
 }

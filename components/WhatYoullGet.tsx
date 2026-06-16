@@ -21,7 +21,7 @@ const benefits = [
   },
   {
     title: 'Host in your city',
-    body: 'Pitch a workshop or meetup. Approved partners get funding, speakers, platform credits, and ImagineArt promotion to make it happen.',
+    body: 'Pitch a workshop or meetup. Approved partners get platform credits, speakers, and ImagineArt promotion to help make it happen.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="4" width="18" height="18" rx="2" />
@@ -50,7 +50,7 @@ export default function WhatYoullGet() {
     <section
       id="rewards"
       className="ia-sec"
-      style={{ background: '#fff' }}
+      style={{ background: 'var(--clr-bg)' }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <RevealWrapper style={{ marginBottom: '52px', textAlign: 'center' }}>
@@ -69,7 +69,7 @@ export default function WhatYoullGet() {
             style={{
               fontSize: '17px',
               lineHeight: 1.6,
-              color: '#6A6A6A',
+              color: 'var(--clr-fg-2)',
               margin: '0 auto',
               maxWidth: '460px',
             }}
@@ -87,9 +87,9 @@ export default function WhatYoullGet() {
                   display: 'flex',
                   alignItems: 'flex-start',
                   gap: '22px',
-                  background: '#F8F8F8',
+                  background: 'var(--clr-bg-2)',
                   borderRadius: '20px',
-                  border: '1px solid #EBEBEB',
+                  border: '1px solid var(--clr-border)',
                   padding: '30px 28px',
                   transition: 'border-color .2s ease',
                 }}
@@ -100,11 +100,11 @@ export default function WhatYoullGet() {
                     height: '50px',
                     flex: 'none',
                     borderRadius: '14px',
-                    background: 'rgba(0,0,0,.06)',
+                    background: 'var(--clr-icon-box)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#161616',
+                    color: 'var(--clr-fg)',
                   }}
                 >
                   {b.icon}
@@ -116,7 +116,7 @@ export default function WhatYoullGet() {
                       fontWeight: 500,
                       letterSpacing: '-.015em',
                       marginBottom: '8px',
-                      color: '#161616',
+                      color: 'var(--clr-fg)',
                     }}
                   >
                     {b.title}
@@ -125,7 +125,7 @@ export default function WhatYoullGet() {
                     style={{
                       fontSize: '15px',
                       lineHeight: 1.65,
-                      color: '#6A6A6A',
+                      color: 'var(--clr-fg-2)',
                       margin: 0,
                     }}
                   >

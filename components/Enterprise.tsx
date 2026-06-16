@@ -9,8 +9,8 @@ export default function Enterprise() {
           maxWidth: '1200px',
           margin: '0 auto',
           borderRadius: '24px',
-          background: '#F7F6F9',
-          border: '1px solid #EDEDED',
+          background: 'var(--clr-bg-3)',
+          border: '1px solid var(--clr-border)',
           padding: '48px 52px',
           display: 'flex',
           alignItems: 'center',
@@ -35,7 +35,7 @@ export default function Enterprise() {
             style={{
               fontSize: '16px',
               lineHeight: 1.65,
-              color: '#575757',
+              color: 'var(--clr-fg-2)',
               margin: 0,
               maxWidth: '520px',
             }}
@@ -53,8 +53,8 @@ export default function Enterprise() {
             fontSize: '16px',
             fontWeight: 600,
             textDecoration: 'none',
-            color: '#fff',
-            background: '#0F0F0F',
+            color: 'var(--clr-btn-dark-fg)',
+            background: 'var(--clr-btn-dark-bg)',
             padding: '16px 30px',
             borderRadius: '999px',
           }}

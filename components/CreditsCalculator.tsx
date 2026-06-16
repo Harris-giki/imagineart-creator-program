@@ -83,7 +83,7 @@ export default function CreditsCalculator() {
   const ringOffset = (326.7 * (1 - pct)).toFixed(1)
   const ringPctFmt = Math.round(pct * 100) + '%'
   const capped = totalFrom(ig, x, li, reddit, workflow) >= 200000
-  const capLabel = capped ? 'Maxed out — 200K cap reached' : 'Keep going to hit 200K'
+  const capLabel = capped ? 'Maxed out. 200K cap reached' : 'Keep going to hit 200K'
   const capColor = capped ? '#42BE65' : '#8A8A8A'
 
   const wfBg = workflow ? '#F4EEFF' : '#FAFAFA'
@@ -135,7 +135,7 @@ export default function CreditsCalculator() {
               marginBottom: '16px',
             }}
           >
-            03 — THE REWARDS ENGINE
+            03 · THE REWARDS ENGINE
           </div>
           <h2
             style={{
@@ -612,7 +612,7 @@ export default function CreditsCalculator() {
                 display: 'block',
               }}
             >
-              Start earning — apply now
+              Start earning, apply now
             </a>
             <p
               style={{

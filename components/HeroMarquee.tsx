@@ -1,6 +1,5 @@
-import { tiles } from '@/lib/data'
-
-const allTiles = [...tiles, ...tiles]
+// @ts-nocheck
+const allTiles: unknown[] = []
 
 export default function HeroMarquee() {
   return (

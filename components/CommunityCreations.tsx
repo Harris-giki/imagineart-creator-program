@@ -38,7 +38,7 @@ export default function CommunityCreations() {
       const offset = offsetRef.current
       const w = wrap.offsetWidth
       const center = w / 2
-      const sigma = w * 0.24 // gaussian spread — tighter = sharper center peak
+      const sigma = w * 0.24 // gaussian spread, tighter = sharper center peak
 
       track.style.transform = `translateX(-${offset}px)`
 
@@ -65,7 +65,7 @@ export default function CommunityCreations() {
   }, [])
 
   return (
-    <section className="ia-sec-sm" style={{ background: '#fff' }}>
+    <section className="ia-sec-sm" style={{ background: 'var(--clr-bg)' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <RevealWrapper style={{ textAlign: 'center', marginBottom: '48px' }}>
           <h2
@@ -75,7 +75,7 @@ export default function CommunityCreations() {
               fontWeight: 500,
               letterSpacing: '-.02em',
               margin: '0 0 14px',
-              color: '#161616',
+              color: 'var(--clr-fg)',
             }}
           >
             Community Creations
@@ -84,7 +84,7 @@ export default function CommunityCreations() {
             style={{
               fontSize: '16px',
               lineHeight: 1.65,
-              color: '#7A7A7A',
+              color: 'var(--clr-fg-2)',
               margin: '0 auto',
               maxWidth: '520px',
               fontWeight: 400,
@@ -102,12 +102,31 @@ export default function CommunityCreations() {
           className="ia-marquee-wrap"
         >
           <div ref={trackRef} className="ia-marquee-track">
-            {tripled.map((t, i) => (
+            {tripled.map((tile, i) => (
               <div
                 key={i}
                 className="ia-mc"
-                style={{ width: `${CARD_W}px`, height: `${CARD_H}px`, background: t.bg }}
+                onClick={() => window.open(tile.url, '_blank', 'noopener,noreferrer')}
+                style={{ width: `${CARD_W}px`, height: `${CARD_H}px`, background: '#0a0a0a' }}
               >
+                {tile.img && (
+                  <img
+                    src={tile.img}
+                    alt={tile.name}
+                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                )}
+                {tile.video && (
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  >
+                    <source src={tile.video} type="video/mp4" />
+                  </video>
+                )}
                 <div className="ia-mc-veil" />
                 <div className="ia-mc-shine" />
                 <div
@@ -115,14 +134,15 @@ export default function CommunityCreations() {
                     position: 'absolute',
                     left: '14px',
                     right: '14px',
-                    bottom: '12px',
-                    fontSize: '12px',
-                    fontWeight: 500,
-                    color: '#fff',
-                    letterSpacing: '.02em',
+                    bottom: '14px',
                   }}
                 >
-                  {t.handle}
+                  <div style={{ fontSize: '13px', fontWeight: 600, color: '#fff', letterSpacing: '.01em', marginBottom: '2px' }}>
+                    {tile.name}
+                  </div>
+                  <div style={{ fontSize: '11px', color: 'rgba(255,255,255,.55)', letterSpacing: '.02em' }}>
+                    {tile.handle}
+                  </div>
                 </div>
               </div>
             ))}
@@ -137,7 +157,7 @@ export default function CommunityCreations() {
             top: 0,
             bottom: 0,
             width: '300px',
-            background: 'linear-gradient(to right, #fff 48%, transparent)',
+            background: 'linear-gradient(to right, var(--clr-bg) 48%, transparent)',
             pointerEvents: 'none',
             zIndex: 10,
           }}
@@ -150,7 +170,7 @@ export default function CommunityCreations() {
             top: 0,
             bottom: 0,
             width: '300px',
-            background: 'linear-gradient(to left, #fff 48%, transparent)',
+            background: 'linear-gradient(to left, var(--clr-bg) 48%, transparent)',
             pointerEvents: 'none',
             zIndex: 10,
           }}

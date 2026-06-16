@@ -15,6 +15,43 @@
   font-display: swap;
 }
 
+/* ─── Color tokens ─── */
+:root {
+  --clr-bg:          #ffffff;
+  --clr-bg-2:        #F8F8F8;
+  --clr-bg-3:        #F7F6F9;
+  --clr-fg:          #161616;
+  --clr-fg-2:        #6A6A6A;
+  --clr-fg-3:        #9A9A9A;
+  --clr-border:      #E8E8E8;
+  --clr-border-2:    #EAEAEA;
+  --clr-card:        #ffffff;
+  --clr-nav-bg:      rgba(255,255,255,.78);
+  --clr-nav-border:  #EFEFEF;
+  --clr-mobile-nav:  rgba(255,255,255,.97);
+  --clr-btn-dark-bg: #0F0F0F;
+  --clr-btn-dark-fg: #ffffff;
+  --clr-icon-box:    rgba(0,0,0,.06);
+}
+
+html.dark {
+  --clr-bg:          #0C0C0F;
+  --clr-bg-2:        #141417;
+  --clr-bg-3:        #1A1A1E;
+  --clr-fg:          #EDEDE8;
+  --clr-fg-2:        #8A8A90;
+  --clr-fg-3:        #606068;
+  --clr-border:      #252528;
+  --clr-border-2:    #1E1E22;
+  --clr-card:        #141417;
+  --clr-nav-bg:      rgba(12,12,15,.88);
+  --clr-nav-border:  #1E1E22;
+  --clr-mobile-nav:  rgba(12,12,15,.97);
+  --clr-btn-dark-bg: #F0F0F0;
+  --clr-btn-dark-fg: #0C0C0F;
+  --clr-icon-box:    rgba(255,255,255,.09);
+}
+
 * {
   box-sizing: border-box;
   font-family: 'Google Sans Flex', 'Inter', system-ui, sans-serif;
@@ -24,10 +61,11 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: #ffffff;
-  color: #161616;
+  background: var(--clr-bg);
+  color: var(--clr-fg);
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
+  transition: background .25s ease, color .25s ease;
 }
 
 ::selection {
@@ -207,6 +245,11 @@ html, body {
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
+.ia-grid-5col {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 36px 24px;
+}
 .ia-grid-4col {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -228,19 +271,22 @@ html, body {
   gap: 20px;
 }
 
+/* ─── Logo: invert black→white in dark mode ─── */
+html.dark .ia-logo-img { filter: invert(1); }
+
 /* ─── Nav ─── */
 .ia-nav-links   { display: flex; align-items: center; gap: 26px; }
 .ia-nav-launch  { display: flex; }
-.ia-nav-burger  { display: none; background: none; border: none; cursor: pointer; padding: 6px; color: #161616; }
+.ia-nav-burger  { display: none; background: none; border: none; cursor: pointer; padding: 6px; color: var(--clr-fg); }
 .ia-mobile-nav  {
   display: none;
   position: fixed;
   top: 57px;
   left: 0; right: 0;
-  background: rgba(255,255,255,.97);
+  background: var(--clr-mobile-nav);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid #EFEFEF;
+  border-bottom: 1px solid var(--clr-nav-border);
   flex-direction: column;
   padding: 16px 24px 24px;
   gap: 4px;
@@ -252,10 +298,10 @@ html, body {
 .ia-mobile-nav a {
   font-size: 16px;
   font-weight: 500;
-  color: #161616;
+  color: var(--clr-fg);
   text-decoration: none;
   padding: 12px 4px;
-  border-bottom: 1px solid #F0F0F0;
+  border-bottom: 1px solid var(--clr-border);
 }
 .ia-mobile-nav a:last-child { border-bottom: none; }
 
@@ -263,6 +309,11 @@ html, body {
 @media (max-width: 1024px) {
   .ia-grid-4col       { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .ia-grid-4col-tight { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .ia-grid-5col       { grid-template-columns: repeat(3, 1fr); gap: 28px 20px; }
+}
+
+@media (max-width: 600px) {
+  .ia-grid-5col { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
 }
 
 @media (max-width: 860px) {
@@ -321,7 +372,7 @@ html, body {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--clr-card);
   border: none;
   box-shadow: 0 0 0 5px #8A3FFC, 0 6px 16px rgba(138, 63, 252, .45);
   cursor: grab;
@@ -337,7 +388,7 @@ html, body {
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--clr-card);
   border: 5px solid #8A3FFC;
   box-shadow: 0 6px 16px rgba(138, 63, 252, .45);
   cursor: grab;
@@ -345,7 +396,7 @@ html, body {
 
 .ia-link {
   position: relative;
-  color: #161616;
+  color: var(--clr-fg);
   text-decoration: none;
 }
 
@@ -372,7 +423,7 @@ html, body {
   font-weight: 500;
   white-space: nowrap;
   text-decoration: none;
-  color: #161616;
+  color: var(--clr-fg);
   padding: 6px 13px;
   border-radius: 999px;
   background: linear-gradient(135deg, rgba(138,63,252,.10), rgba(198,130,255,.08));
@@ -392,6 +443,10 @@ html, body {
 .ia-btn-dark:hover {
   transform: translateY(-2px);
   box-shadow: 0 14px 30px rgba(15, 15, 15, .28);
+}
+
+html.dark .ia-btn-dark:hover {
+  box-shadow: 0 14px 30px rgba(240, 240, 240, .10);
 }
 
 .ia-btn-dark:active {
@@ -422,4 +477,33 @@ html, body {
 
 .ia-persona-art {
   transition: transform .6s cubic-bezier(.16, 1, .3, 1);
+}
+
+/* ─── Dark mode theme toggle button ─── */
+.ia-theme-toggle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--clr-border);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-fg);
+  flex-shrink: 0;
+  transition: background .2s ease, border-color .2s ease, color .2s ease;
+}
+
+.ia-theme-toggle:hover {
+  background: var(--clr-bg-2);
+}
+
+/* ─── Footer world map ─── */
+.ia-world-map-path {
+  fill: rgba(0, 0, 0, 0.08);
+}
+
+html.dark .ia-world-map-path {
+  fill: rgba(255, 255, 255, 0.07);
 }

@@ -34,7 +34,7 @@ export default function FAQ() {
           {faqData.map((f, i) => {
             const isOpen = openIndex === i
             return (
-              <div key={i} style={{ borderBottom: '1px solid #EAEAEA' }}>
+              <div key={i} style={{ borderBottom: '1px solid var(--clr-border-2)' }}>
                 <div
                   className="ia-faq-q"
                   onClick={() => setOpenIndex(isOpen ? -1 : i)}
@@ -81,7 +81,7 @@ export default function FAQ() {
                     style={{
                       fontSize: '16px',
                       lineHeight: 1.65,
-                      color: '#5C5C5C',
+                      color: 'var(--clr-fg-2)',
                       margin: 0,
                       padding: f.linkText ? '0 4px 16px' : '0 4px 28px',
                       maxWidth: '680px',
