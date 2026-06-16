@@ -2,8 +2,8 @@ import RevealWrapper from './RevealWrapper'
 
 const benefits = [
   {
-    title: 'Credits that scale with you',
-    body: '20K to get started, up to 200K every month based on performance. Premium platform access from day one.',
+    title: 'Fuel that grows with you',
+    body: 'Start with 20K credits and unlock up to 200K every month as you create. Premium access from day one, no waiting, no limits on your ambition.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
@@ -11,8 +11,8 @@ const benefits = [
     ),
   },
   {
-    title: 'We spotlight your work',
-    body: 'Featured in case studies, social spotlights, and co-marketing campaigns. Your best work gets amplified across ImagineArt channels on all socials.',
+    title: 'Your work, in the spotlight',
+    body: 'We put your best work in front of the world, case studies, social features, and co-marketing campaigns amplified across every ImagineArt channel.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
@@ -20,8 +20,8 @@ const benefits = [
     ),
   },
   {
-    title: 'Host in your city',
-    body: 'Pitch a workshop or meetup. Approved partners get platform credits, speakers, and ImagineArt promotion to help make it happen.',
+    title: 'Lead in your city',
+    body: "Pitch a workshop or meetup and we'll back it, platform credits, speakers, and full ImagineArt promotion to bring your community together.",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="4" width="18" height="18" rx="2" />
@@ -32,8 +32,8 @@ const benefits = [
     ),
   },
   {
-    title: 'Earn as you grow',
-    body: '15% revenue share as a Creative Partner, affiliate program access, and enterprise bonuses when you bring in studios or agencies.',
+    title: 'Get paid as you rise',
+    body: 'Earn up to 25% revenue share as a Creative Partner, plus affiliate access and enterprise bonuses when you bring studios and agencies on board.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="12" cy="12" r="10" />
@@ -63,7 +63,7 @@ export default function WhatYoullGet() {
               margin: '0 0 16px',
             }}
           >
-            What You&apos;ll Get.
+            What&apos;s In It For You
           </h2>
           <p
             style={{
@@ -71,10 +71,10 @@ export default function WhatYoullGet() {
               lineHeight: 1.6,
               color: 'var(--clr-fg-2)',
               margin: '0 auto',
-              maxWidth: '460px',
+              maxWidth: '500px',
             }}
           >
-            Everything you need to create, grow, and earn from your work.
+            Everything you need to create boldly, grow faster, and turn your craft into income.
           </p>
         </RevealWrapper>
 

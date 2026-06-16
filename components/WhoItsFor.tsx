@@ -21,7 +21,7 @@ export default function WhoItsFor() {
               color: 'var(--clr-fg)',
             }}
           >
-            Built for Three Kinds of Creative.
+            Where Every Creator Belongs
           </h2>
         </RevealWrapper>
 
@@ -38,7 +38,7 @@ export default function WhoItsFor() {
                 boxShadow: '0 2px 16px rgba(0,0,0,.04)',
               }}
             >
-              <div style={{ position: 'relative', height: '280px', overflow: 'hidden' }}>
+              <div className="ia-persona-img" style={{ position: 'relative', height: '280px', overflow: 'hidden' }}>
                 <img
                   src={`/who-${i + 1}.png`}
                   alt={p.title}

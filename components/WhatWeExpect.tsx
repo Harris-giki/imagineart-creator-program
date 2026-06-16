@@ -3,16 +3,9 @@ import { expectations } from '@/lib/data'
 
 export default function WhatWeExpect() {
   return (
-    <section style={{ padding: '96px 40px', background: 'var(--clr-bg-3)' }}>
+    <section className="ia-sec" style={{ background: 'var(--clr-bg-3)' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <RevealWrapper
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '60px',
-            alignItems: 'center',
-          }}
-        >
+        <RevealWrapper className="ia-expect-grid">
           <div>
             <div
               style={{
@@ -34,7 +27,7 @@ export default function WhatWeExpect() {
                 margin: '0 0 20px',
               }}
             >
-              Clear Expectations. No Fine Print.
+              Clear Expectations, No Fine Print
             </h2>
             <p
               style={{

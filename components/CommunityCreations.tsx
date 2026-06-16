@@ -17,6 +17,9 @@ export default function CommunityCreations() {
   const trackRef = useRef<HTMLDivElement>(null)
   const offsetRef = useRef(0)
   const rafRef = useRef<number>()
+  const hoveredRef = useRef<number>(-1)
+  // Per-card smooth hover-scale multiplier (one entry per card in the tripled array)
+  const hoverScalesRef = useRef<number[]>([])
 
   const tripled = [...tiles, ...tiles, ...tiles]
 
@@ -25,6 +28,8 @@ export default function CommunityCreations() {
     const track = trackRef.current
     if (!wrap || !track) return
     const cards = Array.from(track.children) as HTMLElement[]
+
+    hoverScalesRef.current = new Array(cards.length).fill(1)
 
     // Start with a card perfectly centered
     const wrapW = wrap.offsetWidth
@@ -49,7 +54,13 @@ export default function CommunityCreations() {
         const scale = 0.78 + t * 0.5           // 0.78 → 1.28
         const ry = (cx < center ? -1 : 1) * (1 - t) * 12   // subtle tilt, no wide gaps
         const opacity = 0.18 + t * 0.82        // fade to near-invisible at edges
-        card.style.transform = `scale(${scale}) perspective(700px) rotateY(${ry}deg)`
+
+        // Smooth hover lerp — eases toward 1.13× on hover, back to 1.0× on leave
+        const targetHover = hoveredRef.current === i ? 1.13 : 1.0
+        hoverScalesRef.current[i] += (targetHover - hoverScalesRef.current[i]) * 0.1
+        const finalScale = scale * hoverScalesRef.current[i]
+
+        card.style.transform = `scale(${finalScale}) perspective(700px) rotateY(${ry}deg)`
         card.style.zIndex = String(Math.round(t * 10))
         card.style.opacity = opacity.toFixed(2)
         card.style.boxShadow = t > 0.25
@@ -107,6 +118,8 @@ export default function CommunityCreations() {
                 key={i}
                 className="ia-mc"
                 onClick={() => window.open(tile.url, '_blank', 'noopener,noreferrer')}
+                onMouseEnter={() => { hoveredRef.current = i }}
+                onMouseLeave={() => { hoveredRef.current = -1 }}
                 style={{ width: `${CARD_W}px`, height: `${CARD_H}px`, background: '#0a0a0a' }}
               >
                 {tile.img && (

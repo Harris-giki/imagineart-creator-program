@@ -28,7 +28,7 @@ export default function Community() {
               color: 'var(--clr-fg)',
             }}
           >
-            Partners in Every Timezone.
+            Learn and Grow with Us
           </h2>
         </RevealWrapper>
 
@@ -69,7 +69,7 @@ export default function Community() {
             />
             <div style={{ position: 'relative', width: '100%' }}>
               <h3 style={{ fontSize: '28px', fontWeight: 500, letterSpacing: '-.015em', margin: '0 0 12px', color: '#fff' }}>
-                Host an Event with Us.
+                Host an Event with Us
               </h3>
               <p
                 style={{
@@ -80,7 +80,7 @@ export default function Community() {
                   margin: '0 0 24px',
                 }}
               >
-                Pitch a workshop, meetup, or creative session in your city. Approved partners get platform credits, speakers, and ImagineArt promotion to help make it happen.
+                Pitch a workshop, meetup, or creative session in your city. Approved partners get platform credits, speakers, and full ImagineArt promotion to make it unforgettable.
               </p>
               <button
                 onClick={() => window.Tally?.openPopup('0Q6GR6', { layout: 'modal', width: 700, overlay: true, animateClose: true })}
@@ -96,7 +96,7 @@ export default function Community() {
                   borderRadius: '999px',
                 }}
               >
-                Submit a proposal
+                Pitch Your Event
               </button>
             </div>
           </div>
@@ -123,9 +123,9 @@ export default function Community() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               {[
-                { day: 'Wed', label: 'Office Hours', detail: '8–9 AM EDT · the team is live and on-call, ready for your questions, workflows, and ideas' },
-                { day: 'Thu', label: 'Imagine with ImagineArt', detail: '9:30 PM EDT · podcasts with top creators and filmmakers one week, live community challenges the next. Always something fresh.' },
-                { day: 'Fri', label: 'Expert Sessions', detail: '11 AM–12 PM EDT · hands-on with our Creative Technologists: real talk, Film Studio deep-dives, and workflow tips' },
+                { day: 'Wed', label: 'Office Hours', detail: '8–9 AM EDT · The team goes live and on-call — bring your questions, workflows, and ideas.' },
+                { day: 'Thu', label: 'Imagine with ImagineArt', detail: '9:30 PM EDT · Podcasts with top creators and filmmakers one week, live community challenges the next. Always something fresh.' },
+                { day: 'Fri', label: 'Expert Sessions', detail: '11 AM–12 PM EDT · Go hands-on with our Creative Technologists — real talk, Film Studio deep-dives, and workflow tips.' },
               ].map((s, i) => (
                 <div
                   key={i}
@@ -184,7 +184,7 @@ export default function Community() {
                 alignSelf: 'flex-start',
               }}
             >
-              Join on Discord
+              Stay Updated on Discord
             </a>
           </div>
         </RevealWrapper>

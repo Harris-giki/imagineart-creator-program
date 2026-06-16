@@ -32,7 +32,7 @@ export default function TopCreators() {
               color: 'var(--clr-fg)',
             }}
           >
-            Meet Our Top Creators.
+            Meet Our Top Creators
           </h2>
           <p
             style={{
@@ -85,7 +85,9 @@ export default function TopCreators() {
 
           <a
             className="ia-btn-dark"
-            href="#apply"
+            href="https://www.imagine.art/community"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               display: 'inline-block',
               fontSize: '15.5px',
@@ -97,7 +99,7 @@ export default function TopCreators() {
               borderRadius: '999px',
             }}
           >
-            Become one of us
+            Get Featured
           </a>
         </RevealWrapper>
       </div>

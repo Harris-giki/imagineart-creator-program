@@ -87,7 +87,7 @@ export default function Footer() {
         </div>
 
         {/* Link columns */}
-        <div style={{ display: 'flex', gap: '64px', flexWrap: 'wrap' }}>
+        <div className="ia-footer-links" style={{ display: 'flex', gap: '64px', flexWrap: 'wrap' }}>
           <div>
             <div
               style={{

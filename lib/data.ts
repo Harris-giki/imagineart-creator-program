@@ -49,20 +49,20 @@ export const tiles: Tile[] = [
 export const personas: Persona[] = [
   {
     num: "01",
-    title: "Artists & Hobbyists",
-    body: "Artists and enthusiasts exploring AI as a creative medium, turning ideas, sketches, and experiments into finished visuals, and pushing personal work toward a professional standard.",
+    title: "Artists & Visionaries",
+    body: "For the makers exploring AI as a new creative medium, turning sketches, ideas, and late-night experiments into finished work that rivals the pros.",
     bg: "radial-gradient(130% 130% at 20% 15%,#FF85DD 0%,transparent 50%),radial-gradient(120% 120% at 85% 90%,#8A3FFC 0%,transparent 55%),linear-gradient(135deg,#2A1248,#0c0716)"
   },
   {
     num: "02",
     title: "Professional Designers",
-    body: "Brand designers, art directors, and visual storytellers using AI in real client work, generating concepts, variations, and assets faster without compromising on quality or control.",
+    body: "For brand designers, art directors, and visual storytellers shaping real client work, generating concepts, variations, and assets at speed, without ever giving up quality or control.",
     bg: "radial-gradient(120% 120% at 25% 20%,#67E8F9 0%,transparent 52%),radial-gradient(120% 120% at 85% 85%,#2C7FB8 0%,transparent 55%),linear-gradient(135deg,#06343a,#04161a)"
   },
   {
     num: "03",
-    title: "Content Creators",
-    body: "Creators making images, video, and social content at volume, using AI to stay consistent, move quickly, and keep their feeds and channels growing.",
+    title: "AI Content Creators",
+    body: "For creators producing images, video, and social content at scale, using AI to stay consistent, move fast, and keep their audience growing.",
     bg: "radial-gradient(120% 130% at 20% 80%,#6EE7A8 0%,transparent 52%),radial-gradient(120% 120% at 80% 15%,#FFC27A 0%,transparent 52%),linear-gradient(135deg,#1d2410,#0a0d06)"
   }
 ]

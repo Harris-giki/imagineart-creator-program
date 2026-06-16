@@ -121,6 +121,11 @@ html, body {
   100% { background-position: 200% center; }
 }
 
+@keyframes ia-scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: .75; }
+  50%       { transform: translateY(7px); opacity: 1; }
+}
+
 @keyframes ia-twinkle {
   0%, 100% { opacity: .5; }
   50%       { opacity: 1; }
@@ -211,6 +216,7 @@ html, body {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  will-change: transform, opacity;
 }
 
 .ia-mc-veil {
@@ -305,6 +311,18 @@ html.dark .ia-logo-img { filter: invert(1); }
 }
 .ia-mobile-nav a:last-child { border-bottom: none; }
 
+/* ─── Expect section 2-col grid ─── */
+.ia-expect-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ─── Section padding scale ─── */
+.ia-sec    { padding: 100px 40px; }
+.ia-sec-sm { padding: 80px 40px; }
+
 /* ─── Responsive breakpoints ─── */
 @media (max-width: 1024px) {
   .ia-grid-4col       { grid-template-columns: repeat(2, 1fr); gap: 20px; }
@@ -312,47 +330,54 @@ html.dark .ia-logo-img { filter: invert(1); }
   .ia-grid-5col       { grid-template-columns: repeat(3, 1fr); gap: 28px 20px; }
 }
 
-@media (max-width: 600px) {
-  .ia-grid-5col { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
-}
-
 @media (max-width: 860px) {
-  .ia-grid-3col       { grid-template-columns: repeat(2, 1fr); }
-  .ia-nav-links       { display: none; }
-  .ia-nav-launch      { display: none; }
-  .ia-nav-burger      { display: flex; align-items: center; justify-content: center; }
-  .ia-community-grid  { grid-template-columns: 1fr; }
+  .ia-sec              { padding: 64px 24px; }
+  .ia-sec-sm           { padding: 52px 24px; }
+  .ia-grid-3col        { grid-template-columns: repeat(2, 1fr); }
+  .ia-community-grid   { grid-template-columns: 1fr; }
+  .ia-expect-grid      { grid-template-columns: 1fr; gap: 36px; }
+  .ia-nav-links        { display: none; }
+  .ia-nav-launch       { display: none; }
+  .ia-nav-burger       { display: flex; align-items: center; justify-content: center; }
+  .ia-hero-content     { padding: 0 28px !important; height: 50% !important; }
+  .ia-enterprise-inner { padding: 36px 28px !important; }
+  .ia-footer-pad       { padding: 48px 24px 32px !important; }
+  .ia-marquee-wrap     { margin: 0 -24px; }
+  /* Who it's for card image: shorter on tablet */
+  .ia-persona-img      { height: 220px !important; }
 }
 
 @media (max-width: 600px) {
   .ia-grid-2col   { grid-template-columns: 1fr; }
   .ia-grid-3col   { grid-template-columns: 1fr; }
+  .ia-grid-5col   { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
   .ia-stats-grid  { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  /* Benefit cards: stack icon + text vertically on small screens */
+  .ia-benefit-card { flex-direction: column !important; gap: 14px !important; }
+  /* Footer links: wrap into a single column */
+  .ia-footer-links { gap: 32px !important; }
+}
+
+@media (max-width: 480px) {
+  .ia-sec              { padding: 48px 16px; }
+  .ia-sec-sm           { padding: 40px 16px; }
+  .ia-hero-content     { padding: 0 16px !important; height: 48% !important; }
+  .ia-enterprise-inner { padding: 28px 18px !important; }
+  .ia-enterprise-outer { padding: 0 16px 64px !important; }
+  .ia-footer-pad       { padding: 36px 16px 24px !important; }
+  .ia-marquee-wrap     { margin: 0 -16px; }
+  .ia-persona-img      { height: 200px !important; }
+  /* Community cards full-width padding */
+  .ia-community-grid > * { padding: 28px 22px !important; }
+  /* FAQ question font */
+  .ia-faq-q span:first-child { font-size: 16px !important; }
 }
 
 @media (max-width: 420px) {
   .ia-stats-grid { grid-template-columns: 1fr; gap: 28px; }
-}
-
-/* ─── Section padding scale ─── */
-.ia-sec  { padding: 100px 40px; }
-.ia-sec-sm { padding: 80px 40px; }
-
-@media (max-width: 860px) {
-  .ia-sec    { padding: 64px 24px; }
-  .ia-sec-sm { padding: 52px 24px; }
-  .ia-hero-content { padding: 80px 28px 72px !important; }
-  .ia-enterprise-inner { padding: 36px 28px !important; }
-  .ia-footer-pad { padding: 48px 24px 32px !important; }
-}
-
-@media (max-width: 480px) {
-  .ia-sec    { padding: 48px 16px; }
-  .ia-sec-sm { padding: 40px 16px; }
-  .ia-hero-content { padding: 64px 16px 56px !important; }
-  .ia-enterprise-inner { padding: 28px 18px !important; }
-  .ia-enterprise-outer { padding: 0 16px 72px !important; }
-  .ia-footer-pad { padding: 36px 16px 24px !important; }
+  .ia-grid-5col  { grid-template-columns: repeat(2, 1fr); gap: 20px 12px; }
+  /* WhatWeExpect expectation cards */
+  .ia-expect-card { padding: 16px 16px !important; }
 }
 
 .ia-rng {
@@ -497,6 +522,14 @@ html.dark .ia-btn-dark:hover {
 
 .ia-theme-toggle:hover {
   background: var(--clr-bg-2);
+}
+
+/* ─── Stats band ─── */
+@media (max-width: 860px) {
+  .ia-stats-band { padding: 52px 24px !important; }
+}
+@media (max-width: 480px) {
+  .ia-stats-band { padding: 40px 16px !important; }
 }
 
 /* ─── Footer world map ─── */

@@ -59,7 +59,7 @@ export default function Nav() {
         }}
       >
         {/* Logo */}
-        <a href="#top" onClick={close} style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flex: 'none' }}>
+        <a href="https://www.imagine.art" target="_blank" rel="noopener noreferrer" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flex: 'none' }}>
           <img src="/imagineart-black-logo.png" alt="ImagineArt" className="ia-logo-img" style={{ height: '26px', width: 'auto', display: 'block' }} />
         </a>
 
