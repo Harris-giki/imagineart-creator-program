@@ -241,7 +241,7 @@ export default function ApplyModal() {
             onClick={() => {
               setOpen(false)
               setTimeout(() => {
-                window.Tally?.openPopup('rjY7yN', {
+                window.Tally?.openPopup('mB8Dqe', {
                   layout: 'modal',
                   width: 700,
                   overlay: true,
