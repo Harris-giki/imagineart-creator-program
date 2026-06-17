@@ -42,6 +42,8 @@ export default function WhoItsFor() {
                 <img
                   src={`https://cdn.web.imagine.art/imagine-one/test/assets/who-is-this-for/${i + 1}.png`}
                   alt={p.title}
+                  loading="lazy"
+                  decoding="async"
                   style={{
                     position: 'absolute',
                     inset: 0,

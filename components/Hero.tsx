@@ -7,6 +7,8 @@ export default function Hero() {
         src="https://cdn.web.imagine.art/imagine-one/test/assets/hero-banner.png"
         alt=""
         className="ia-hero-img"
+        fetchPriority="high"
+        decoding="async"
       />
 
       {/* Overlay */}

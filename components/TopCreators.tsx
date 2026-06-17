@@ -60,6 +60,8 @@ export default function TopCreators() {
                 <img
                   src={c.img}
                   alt={c.name}
+                  loading="lazy"
+                  decoding="async"
                   style={{
                     width: '104px',
                     height: '104px',
