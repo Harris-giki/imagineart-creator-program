@@ -40,7 +40,7 @@ export default function WhoItsFor() {
             >
               <div className="ia-persona-img" style={{ position: 'relative', height: '280px', overflow: 'hidden' }}>
                 <img
-                  src={`https://cdn.web.imagine.art/imagine-one/test/assets/who-is-this-for/${i + 1}.png`}
+                  src={`https://cdn.web.imagine.art/imagine-one/test/assets/who-is-this-for/${[1, 3, 2][i]}.png`}
                   alt={p.title}
                   loading="lazy"
                   decoding="async"
