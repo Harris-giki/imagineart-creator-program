@@ -114,7 +114,7 @@ export default function Nav() {
                 {l.label}
               </a>
             ))}
-            <a className="ia-events-link" href="#" target="_blank" rel="noopener noreferrer">
+            <a className="ia-events-link" href="https://luma.com/Imagine.Art" target="_blank" rel="noopener noreferrer">
               <span style={{ position: 'relative', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '8px', height: '8px' }}>
                 <span style={{ position: 'absolute', width: '8px', height: '8px', borderRadius: '50%', background: '#8A3FFC', animation: 'ia-pulse 2s cubic-bezier(.455,.03,.515,.955) infinite' }} />
                 <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#8A3FFC', flexShrink: 0 }} />
@@ -199,7 +199,7 @@ export default function Nav() {
         <a href="https://www.imagine.art" target="_blank" rel="noopener noreferrer" onClick={close}>Launch app</a>
         <a href="#apply" onClick={close} style={{ fontWeight: 600, color: '#8A3FFC' }}>Apply now</a>
         <a
-          href="#"
+          href="https://luma.com/Imagine.Art"
           target="_blank"
           rel="noopener noreferrer"
           onClick={close}

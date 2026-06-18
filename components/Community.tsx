@@ -165,27 +165,48 @@ export default function Community() {
                 </div>
               ))}
             </div>
-            <a
-              href="https://discord.gg/H724XtQXg7"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '7px',
-                fontSize: '13.5px',
-                fontWeight: 500,
-                textDecoration: 'none',
-                color: 'var(--clr-fg)',
-                padding: '10px 18px',
-                borderRadius: '999px',
-                border: '1px solid var(--clr-border)',
-                background: 'var(--clr-card)',
-                alignSelf: 'flex-start',
-              }}
-            >
-              Stay Updated on Discord
-            </a>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              <a
+                href="https://discord.gg/H724XtQXg7"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '7px',
+                  fontSize: '13.5px',
+                  fontWeight: 500,
+                  textDecoration: 'none',
+                  color: 'var(--clr-fg)',
+                  padding: '10px 18px',
+                  borderRadius: '999px',
+                  border: '1px solid var(--clr-border)',
+                  background: 'var(--clr-card)',
+                }}
+              >
+                Stay Updated on Discord
+              </a>
+              <a
+                href="https://luma.com/Imagine.Art"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '7px',
+                  fontSize: '13.5px',
+                  fontWeight: 500,
+                  textDecoration: 'none',
+                  color: 'var(--clr-fg)',
+                  padding: '10px 18px',
+                  borderRadius: '999px',
+                  border: '1px solid var(--clr-border)',
+                  background: 'var(--clr-card)',
+                }}
+              >
+                Upcoming Events
+              </a>
+            </div>
           </div>
         </RevealWrapper>
       </div>

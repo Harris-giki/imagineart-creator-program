@@ -29,7 +29,7 @@ export default function Enterprise() {
               margin: '0 0 14px',
             }}
           >
-            Know a Studio Ready to Scale on AI?
+            Get 20% by referring a team ready to scale on AI.
           </h3>
           <p
             style={{
@@ -45,7 +45,7 @@ export default function Enterprise() {
         </div>
         <a
           className="ia-btn-dark"
-          href="https://vyroai.notion.site/ImagineArt-Enterprise-Referral-Program-Creator-Partners-2ed0152cd76980dea449fa36e1c41569"
+          href="https://imagineart.notion.site/ImagineArt-Enterprise-Referral-Program-Creator-Partners-2ed0152cd76980dea449fa36e1c41569?source=copy_link"
           target="_blank"
           rel="noopener noreferrer"
           style={{
