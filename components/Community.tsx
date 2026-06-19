@@ -3,6 +3,7 @@
 import RevealWrapper from './RevealWrapper'
 import { NoiseBackground } from '@/components/ui/noise-background'
 import SectionSparkles from '@/components/SectionSparkles'
+import { CardContainer, CardBody, CardItem } from '@/components/ui/3d-card'
 
 declare global {
   interface Window {
@@ -36,76 +37,81 @@ export default function Community() {
         </RevealWrapper>
 
         <RevealWrapper className="ia-community-grid">
-          {/* Host an event card */}
-          <div
-            className="ia-community-card"
-            style={{
-              position: 'relative',
-              overflow: 'hidden',
-              borderRadius: '22px',
-              padding: '52px 48px',
-              minHeight: '340px',
-              display: 'flex',
-              alignItems: 'flex-end',
-            }}
-          >
-            {/* Background image */}
-            <img
-              src="https://cdn.web.imagine.art/imagine-one/test/assets/event.png"
-              alt=""
+          {/* Host an event card — 3D tilt */}
+          <CardContainer style={{ width: '100%', height: '100%', minHeight: 0 }}>
+            <CardBody
+              className="ia-community-card"
               style={{
-                position: 'absolute',
-                inset: 0,
+                position: 'relative',
+                borderRadius: '22px',
+                minHeight: '340px',
+                display: 'flex',
+                alignItems: 'flex-end',
                 width: '100%',
                 height: '100%',
-                objectFit: 'cover',
-                objectPosition: 'center',
-                display: 'block',
               }}
-            />
-            {/* Overlay — lighter so the image breathes */}
-            <div
-              style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'linear-gradient(to top, rgba(10,4,30,.80) 0%, rgba(10,4,30,.38) 55%, rgba(10,4,30,.15) 100%)',
-              }}
-            />
-            <div style={{ position: 'relative', width: '100%' }}>
-              <h3 style={{ fontSize: '28px', fontWeight: 500, letterSpacing: '-.015em', margin: '0 0 12px', color: '#fff' }}>
-                Host an Event with Us
-              </h3>
-              <p
-                style={{
-                  fontSize: '16px',
-                  lineHeight: 1.6,
-                  color: 'rgba(255,255,255,.85)',
-                  maxWidth: '440px',
-                  margin: '0 0 24px',
-                }}
-              >
-                Pitch a workshop, meetup, or creative session in your city. Approved partners get platform credits, speakers, and full ImagineArt promotion to make it unforgettable.
-              </p>
-              <NoiseBackground gradientColors={['#8A3FFC', '#C8AAFF', '#F9B8D4', '#FFD4A8', '#ffffff']}>
-                <button
-                  onClick={() => window.Tally?.openPopup('0Q6GR6', { layout: 'modal', width: 700, overlay: true, animateClose: true })}
+            >
+              {/* Background image + overlay — clipped */}
+              <div style={{ position: 'absolute', inset: 0, borderRadius: '22px', overflow: 'hidden' }}>
+                <img
+                  src="https://cdn.web.imagine.art/imagine-one/test/assets/event.png"
+                  alt=""
                   style={{
-                    display: 'inline-block',
-                    fontSize: '15px',
-                    fontWeight: 600,
-                    cursor: 'pointer',
-                    border: 'none',
-                    color: '#0F0F0F',
-                    background: '#fff',
-                    padding: '13px 26px',
-                    borderRadius: '999px',
+                    position: 'absolute',
+                    inset: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    display: 'block',
+                  }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(to top, rgba(10,4,30,.80) 0%, rgba(10,4,30,.38) 55%, rgba(10,4,30,.15) 100%)',
+                  }}
+                />
+              </div>
+
+              {/* Text content — floats at z=70 */}
+              <CardItem translateZ={70} style={{ position: 'relative', width: '100%', padding: '52px 48px', zIndex: 2 }}>
+                <h3 style={{ fontSize: '28px', fontWeight: 500, letterSpacing: '-.015em', margin: '0 0 12px', color: '#fff' }}>
+                  Host an Event with Us
+                </h3>
+                <p
+                  style={{
+                    fontSize: '16px',
+                    lineHeight: 1.6,
+                    color: 'rgba(255,255,255,.85)',
+                    maxWidth: '440px',
+                    margin: '0 0 24px',
                   }}
                 >
-                  Pitch Your Event
-                </button>
-              </NoiseBackground>
-            </div>
-          </div>
+                  Pitch a workshop, meetup, or creative session in your city. Approved partners get platform credits, speakers, and full ImagineArt promotion to make it unforgettable.
+                </p>
+                <NoiseBackground gradientColors={['#8A3FFC', '#C8AAFF', '#F9B8D4', '#FFD4A8', '#ffffff']}>
+                  <button
+                    onClick={() => window.Tally?.openPopup('0Q6GR6', { layout: 'modal', width: 700, overlay: true, animateClose: true })}
+                    style={{
+                      display: 'inline-block',
+                      fontSize: '15px',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      border: 'none',
+                      color: '#0F0F0F',
+                      background: '#fff',
+                      padding: '13px 26px',
+                      borderRadius: '999px',
+                    }}
+                  >
+                    Pitch Your Event
+                  </button>
+                </NoiseBackground>
+              </CardItem>
+            </CardBody>
+          </CardContainer>
 
           {/* Live sessions card */}
           <div

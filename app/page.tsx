@@ -1,6 +1,7 @@
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
 import WhoItsFor from '@/components/WhoItsFor'
+import HowItWorks from '@/components/HowItWorks'
 import WhatYoullGet from '@/components/WhatYoullGet'
 import TopCreators from '@/components/TopCreators'
 import Community from '@/components/Community'
@@ -30,6 +31,7 @@ export default function Page() {
         </div>
 
         <WhoItsFor />
+        <HowItWorks />
         <WhatYoullGet />
         <TopCreators />
         <Community />
