@@ -136,7 +136,7 @@ export default function WhoItsFor() {
                 >
                   <h3
                     style={{
-                      fontSize: i === 0 ? 'clamp(20px, 2vw, 28px)' : '18px',
+                      fontSize: i === 0 ? 'clamp(20px, 2vw, 28px)' : 'clamp(15px, 1.8vw, 18px)',
                       fontWeight: 500,
                       letterSpacing: '-.018em',
                       lineHeight: 1.2,

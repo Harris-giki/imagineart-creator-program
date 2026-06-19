@@ -523,7 +523,7 @@ html, body {
 @media (max-width: 600px) {
   .ia-who-bento {
     grid-template-columns: 1fr;
-    grid-template-rows: 340px 240px 240px;
+    grid-template-rows: 320px 220px 220px;
   }
   .ia-who-bento-main { grid-row: span 1; }
 }
@@ -569,6 +569,9 @@ html, body {
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
+
+/* Stats band — responsive padding handled via ia-sec override */
+.ia-stats-band { padding: 72px 40px; }
 
 /* ─── Logo: invert black→white in dark mode OR floating pill ─── */
 html.dark .ia-logo-img { filter: invert(1); }
@@ -666,19 +669,22 @@ html:not(.dark) .ia-nav-scrolled .ia-logo-img { filter: invert(1); }
 }
 
 @media (max-width: 600px) {
-  .ia-sec              { padding: 60px 20px; }
-  .ia-sec-sm           { padding: 48px 20px; }
-  .ia-sec-head         { margin-bottom: 32px; }
-  .ia-stats-inner      { padding-top: 32px !important; }
+  .ia-sec              { padding: 44px 20px; }
+  .ia-sec-sm           { padding: 36px 20px; }
+  .ia-sec-head         { margin-bottom: 28px; }
+  .ia-stats-inner      { padding-top: 28px !important; }
   .ia-community-card   { padding: 32px 24px !important; }
   .ia-schedule-card    { padding: 24px !important; }
+  /* Carousel fades: 80px hides too much on 375px phones */
+  .ia-mc-fade-l        { width: 48px !important; }
+  .ia-mc-fade-r        { width: 48px !important; }
 }
 
 /* ─── Hero mobile ─── */
 @media (max-width: 680px) {
-  .ia-hero-content { padding: 0 24px 10%; text-align: center; }
+  .ia-hero-content { justify-content: center; padding: 100px 24px 48px; text-align: center; }
   .ia-hero-h1   { font-size: clamp(30px, 9vw, 48px); margin-bottom: 16px; text-align: center; }
-  .ia-hero-p    { font-size: 13.5px; max-width: 300px; margin-bottom: 20px; text-align: center; }
+  .ia-hero-p    { font-size: 14px; max-width: 320px; margin-bottom: 24px; text-align: center; }
   .ia-hero-arrow { display: none; }
   /* Shift image focus to the more interesting lower-centre portion */
   .ia-hero-img  { object-position: 50% 62% !important; }
@@ -706,11 +712,12 @@ html:not(.dark) .ia-nav-scrolled .ia-logo-img { filter: invert(1); }
 }
 
 @media (max-width: 480px) {
-  .ia-sec              { padding: 44px 16px; }
-  .ia-sec-sm           { padding: 36px 16px; }
-  .ia-sec-head         { margin-bottom: 28px; }
+  .ia-sec              { padding: 36px 16px; }
+  .ia-sec-sm           { padding: 28px 16px; }
+  .ia-sec-head         { margin-bottom: 24px; }
+  .ia-who-bento        { grid-template-rows: 300px 200px 200px; }
   /* Hero: keep 100% height from 680px rule — only tighten padding */
-  .ia-hero-content     { padding: 0 16px 28px; }
+  .ia-hero-content     { padding: 90px 16px 40px; }
   .ia-hero-p           { max-width: 280px; }
   .ia-enterprise-inner { padding: 28px 18px !important; }
   .ia-enterprise-outer { padding: 0 16px 64px !important; }
@@ -861,8 +868,12 @@ html.dark .ia-btn-dark:hover {
 .ia-faq-heading { width: 320px; flex-shrink: 0; }
 
 @media (max-width: 860px) {
-  .ia-faq-layout  { flex-direction: column; gap: 40px; }
+  .ia-faq-layout  { flex-direction: column; gap: 32px; }
   .ia-faq-heading { width: 100%; }
+}
+
+@media (max-width: 480px) {
+  .ia-faq-layout { gap: 24px; }
 }
 
 /* ─── Footer layout ─── */

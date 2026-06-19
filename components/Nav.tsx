@@ -85,7 +85,7 @@ export default function Nav() {
           </a>
 
           {/* Desktop links */}
-          <div className="ia-nav-links" style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+          <div className="ia-nav-links" style={{ alignItems: 'center', gap: '2px' }}>
             {links.map((l) => (
               <a
                 key={l.href}
@@ -156,7 +156,6 @@ export default function Nav() {
               className="ia-nav-cta"
               href="#apply"
               style={{
-                display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 height: '34px',

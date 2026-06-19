@@ -58,7 +58,7 @@ export default function StatsBand() {
   }, [])
 
   return (
-    <section className="ia-stats-band" style={{ padding: '72px 40px', background: 'var(--clr-bg)' }}>
+    <section className="ia-stats-band" style={{ background: 'var(--clr-bg)' }}>
       <div
         ref={containerRef}
         id="ia-stats"
