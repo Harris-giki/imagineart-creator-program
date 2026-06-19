@@ -162,7 +162,7 @@ export default function FAQ() {
     <section
       id="faq"
       className="ia-sec ia-faq-section-pb"
-      style={{ borderTop: '1px solid var(--clr-border)', paddingBottom: '100px' }}
+      style={{ borderTop: '1px solid var(--clr-border)' }}
     >
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div className="ia-faq-layout">

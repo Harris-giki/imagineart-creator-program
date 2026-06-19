@@ -1,7 +1,6 @@
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
 import WhoItsFor from '@/components/WhoItsFor'
-import HowItWorks from '@/components/HowItWorks'
 import WhatYoullGet from '@/components/WhatYoullGet'
 import TopCreators from '@/components/TopCreators'
 import Community from '@/components/Community'
@@ -11,7 +10,6 @@ import CommunityCreations from '@/components/CommunityCreations'
 import FAQ from '@/components/FAQ'
 import Footer from '@/components/Footer'
 import ApplyModal from '@/components/ApplyModal'
-
 export default function Page() {
   return (
     <main style={{ background: 'var(--clr-bg)', color: 'var(--clr-fg)', overflowX: 'hidden', position: 'relative' }}>
@@ -20,7 +18,7 @@ export default function Page() {
 
       {/* Grid background section — starts after hero, ends before footer */}
       <div className="ia-grid-wrapper">
-        {/* Lightning streaks */}
+        {/* Lightning streaks — behind sections */}
         <div className="ia-grid-lightning-container" aria-hidden="true">
           <span className="ia-lightning ia-l1" />
           <span className="ia-lightning ia-l2" />
@@ -31,7 +29,6 @@ export default function Page() {
         </div>
 
         <WhoItsFor />
-        <HowItWorks />
         <WhatYoullGet />
         <TopCreators />
         <Community />

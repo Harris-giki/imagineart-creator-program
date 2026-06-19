@@ -28,15 +28,15 @@ export const ContainerScroll = ({
     <div
       ref={containerRef}
       style={{
-        height: isMobile ? '60rem' : '80rem',
+        height: isMobile ? '30rem' : '42rem',
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'center',
         position: 'relative',
-        padding: isMobile ? '8px' : '80px',
+        padding: isMobile ? '8px' : '24px',
       }}
     >
-      <div style={{ paddingTop: isMobile ? '40px' : '160px', width: '100%', position: 'relative', perspective: '1000px' }}>
+      <div style={{ paddingTop: isMobile ? '20px' : '56px', width: '100%', position: 'relative', perspective: '1000px' }}>
         <Header translate={translate} titleComponent={titleComponent} />
         <Card rotate={rotate} scale={scale}>
           {children}
@@ -77,7 +77,7 @@ function Card({
         rotateX: rotate,
         scale,
         maxWidth: '80rem',
-        marginTop: '-48px',
+        marginTop: '-28px',
         marginLeft: 'auto',
         marginRight: 'auto',
         width: '100%',

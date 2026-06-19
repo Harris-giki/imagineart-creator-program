@@ -628,8 +628,8 @@ html:not(.dark) .ia-nav-scrolled .ia-logo-img { filter: invert(1); }
 }
 
 /* ─── Section padding scale ─── */
-.ia-sec    { padding: 110px 40px; }
-.ia-sec-sm { padding: 88px 40px; }
+.ia-sec    { padding: 72px 40px; }
+.ia-sec-sm { padding: 56px 40px; }
 
 /* ─── Section heading utility — responsive margin-bottom ─── */
 .ia-sec-head { margin-bottom: 56px; }
@@ -643,8 +643,8 @@ html:not(.dark) .ia-nav-scrolled .ia-logo-img { filter: invert(1); }
 }
 
 @media (max-width: 860px) {
-  .ia-sec              { padding: 72px 24px; }
-  .ia-sec-sm           { padding: 56px 24px; }
+  .ia-sec              { padding: 52px 24px; }
+  .ia-sec-sm           { padding: 40px 24px; }
   .ia-sec-head         { margin-bottom: 40px; }
   .ia-grid-3col        { grid-template-columns: repeat(2, 1fr); }
   .ia-creators-grid    { grid-template-columns: repeat(3, 1fr); gap: 28px 16px; }

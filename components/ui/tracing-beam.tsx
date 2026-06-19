@@ -4,11 +4,9 @@ import { motion, useTransform, useScroll, useSpring } from 'framer-motion'
 
 export const TracingBeam = ({
   children,
-  className,
   style,
 }: {
   children: React.ReactNode
-  className?: string
   style?: React.CSSProperties
 }) => {
   const ref = useRef<HTMLDivElement>(null)
@@ -21,67 +19,76 @@ export const TracingBeam = ({
   const [svgHeight, setSvgHeight] = useState(0)
 
   useEffect(() => {
-    if (contentRef.current) {
-      setSvgHeight(contentRef.current.offsetHeight)
+    const update = () => {
+      if (contentRef.current) setSvgHeight(contentRef.current.offsetHeight)
     }
+    update()
+    const ro = new ResizeObserver(update)
+    if (contentRef.current) ro.observe(contentRef.current)
+    return () => ro.disconnect()
   }, [])
 
+  const beamH = Math.max(0, svgHeight - 48)
+
   const y1 = useSpring(
-    useTransform(scrollYProgress, [0, 0.8], [50, svgHeight]),
+    useTransform(scrollYProgress, [0, 0.8], [50, beamH]),
     { stiffness: 500, damping: 90 }
   )
   const y2 = useSpring(
-    useTransform(scrollYProgress, [0, 1], [50, svgHeight - 200]),
+    useTransform(scrollYProgress, [0, 1], [50, beamH - 200]),
     { stiffness: 500, damping: 90 }
   )
 
   return (
     <motion.div
       ref={ref}
-      className={className}
-      style={{ position: 'relative', width: '100%', maxWidth: '56rem', margin: '0 auto', height: '100%', ...style }}
+      style={{ position: 'relative', width: '100%', ...style }}
     >
-      {/* Left beam track */}
-      <div style={{ position: 'absolute', left: '-16px', top: '12px' }}>
+      {/* Left-side beam — sits at the page edge */}
+      <div
+        aria-hidden="true"
+        style={{ position: 'absolute', left: '24px', top: '12px', pointerEvents: 'none', zIndex: 2 }}
+      >
         {/* Dot */}
         <div
           style={{
-            marginLeft: '27px',
-            width: '16px',
-            height: '16px',
+            width: '14px',
+            height: '14px',
             borderRadius: '50%',
-            border: '1px solid rgba(138,63,252,0.4)',
+            border: '1px solid rgba(138,63,252,0.45)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            marginLeft: '3px',
           }}
         >
-          <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#C8AAFF', border: '1px solid #8A3FFC' }} />
+          <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#C8AAFF', border: '1px solid #8A3FFC' }} />
         </div>
 
         {/* SVG beam */}
         <svg
-          viewBox={`0 0 20 ${svgHeight}`}
+          viewBox={`0 0 20 ${beamH}`}
           width="20"
-          height={svgHeight}
-          style={{ marginLeft: '16px', display: 'block' }}
-          aria-hidden="true"
+          height={beamH}
+          style={{ display: 'block' }}
         >
+          {/* Ghost track */}
           <motion.path
-            d={`M 1 0V -36 l 18 24 V ${svgHeight * 0.8} l -18 24V ${svgHeight}`}
+            d={`M 1 0V -36 l 18 24 V ${beamH * 0.8} l -18 24V ${beamH}`}
             fill="none"
-            stroke="rgba(138,63,252,0.12)"
+            stroke="rgba(138,63,252,0.10)"
             strokeWidth="1.5"
           />
+          {/* Animated gradient beam */}
           <motion.path
-            d={`M 1 0V -36 l 18 24 V ${svgHeight * 0.8} l -18 24V ${svgHeight}`}
+            d={`M 1 0V -36 l 18 24 V ${beamH * 0.8} l -18 24V ${beamH}`}
             fill="none"
-            stroke="url(#ia-beam-gradient)"
+            stroke="url(#ia-beam-g)"
             strokeWidth="1.5"
           />
           <defs>
             <motion.linearGradient
-              id="ia-beam-gradient"
+              id="ia-beam-g"
               gradientUnits="userSpaceOnUse"
               x1="0"
               x2="0"
