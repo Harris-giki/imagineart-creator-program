@@ -1,6 +1,7 @@
 'use client'
 
 import RevealWrapper from './RevealWrapper'
+import { NoiseBackground } from '@/components/ui/noise-background'
 
 declare global {
   interface Window {
@@ -82,22 +83,24 @@ export default function Community() {
               >
                 Pitch a workshop, meetup, or creative session in your city. Approved partners get platform credits, speakers, and full ImagineArt promotion to make it unforgettable.
               </p>
-              <button
-                onClick={() => window.Tally?.openPopup('0Q6GR6', { layout: 'modal', width: 700, overlay: true, animateClose: true })}
-                style={{
-                  display: 'inline-block',
-                  fontSize: '15px',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  border: 'none',
-                  color: '#0F0F0F',
-                  background: '#fff',
-                  padding: '13px 26px',
-                  borderRadius: '999px',
-                }}
-              >
-                Pitch Your Event
-              </button>
+              <NoiseBackground gradientColors={['#8A3FFC', '#C8AAFF', '#F9B8D4', '#FFD4A8', '#ffffff']}>
+                <button
+                  onClick={() => window.Tally?.openPopup('0Q6GR6', { layout: 'modal', width: 700, overlay: true, animateClose: true })}
+                  style={{
+                    display: 'inline-block',
+                    fontSize: '15px',
+                    fontWeight: 600,
+                    cursor: 'pointer',
+                    border: 'none',
+                    color: '#0F0F0F',
+                    background: '#fff',
+                    padding: '13px 26px',
+                    borderRadius: '999px',
+                  }}
+                >
+                  Pitch Your Event
+                </button>
+              </NoiseBackground>
             </div>
           </div>
 
@@ -170,19 +173,7 @@ export default function Community() {
                 href="https://discord.gg/H724XtQXg7"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '7px',
-                  fontSize: '13.5px',
-                  fontWeight: 500,
-                  textDecoration: 'none',
-                  color: 'var(--clr-fg)',
-                  padding: '10px 18px',
-                  borderRadius: '999px',
-                  border: '1px solid var(--clr-border)',
-                  background: 'var(--clr-card)',
-                }}
+                className="ia-community-btn"
               >
                 Stay Updated on Discord
               </a>
@@ -190,19 +181,7 @@ export default function Community() {
                 href="https://luma.com/Imagine.Art"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '7px',
-                  fontSize: '13.5px',
-                  fontWeight: 500,
-                  textDecoration: 'none',
-                  color: 'var(--clr-fg)',
-                  padding: '10px 18px',
-                  borderRadius: '999px',
-                  border: '1px solid var(--clr-border)',
-                  background: 'var(--clr-card)',
-                }}
+                className="ia-community-btn"
               >
                 Upcoming Events
               </a>

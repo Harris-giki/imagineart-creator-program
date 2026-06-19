@@ -1,4 +1,5 @@
 import RevealWrapper from './RevealWrapper'
+import { NoiseBackground } from '@/components/ui/noise-background'
 
 const creators = [
   { name: 'Iconic_Mind 👑',      handle: '@otamereoyen',          img: 'https://cdn.web.imagine.art/imagine-one/test/assets/top-creators/Iconic_Mind.png',           url: 'https://www.imagine.art/c/otamereoyen' },
@@ -57,22 +58,19 @@ export default function TopCreators() {
                 rel="noopener noreferrer"
                 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px', textDecoration: 'none' }}
               >
-                <img
-                  src={c.img}
-                  alt={c.name}
-                  loading="lazy"
-                  decoding="async"
-                  style={{
-                    width: '104px',
-                    height: '104px',
-                    borderRadius: '50%',
-                    objectFit: 'cover',
-                    border: '3px solid var(--clr-card)',
-                    boxShadow: '0 4px 20px rgba(0,0,0,.10)',
-                    flexShrink: 0,
-                    transition: 'transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease',
-                  }}
-                />
+                <div
+                  className="ia-tc-img-wrap"
+                  style={{ border: '3px solid var(--clr-card)', boxShadow: '0 4px 20px rgba(0,0,0,.10)' }}
+                >
+                  <img
+                    src={c.img}
+                    alt={c.name}
+                    loading="lazy"
+                    decoding="async"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                  <div className="ia-tc-shine" />
+                </div>
                 <div>
                   <div style={{ fontSize: '15px', fontWeight: 600, letterSpacing: '-.01em', marginBottom: '2px', color: 'var(--clr-fg)' }}>
                     {c.name}
@@ -85,24 +83,26 @@ export default function TopCreators() {
             ))}
           </div>
 
-          <a
-            className="ia-btn-dark"
-            href="https://www.imagine.art/community"
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{
-              display: 'inline-block',
-              fontSize: '15.5px',
-              fontWeight: 600,
-              textDecoration: 'none',
-              color: 'var(--clr-btn-dark-fg)',
-              background: 'var(--clr-btn-dark-bg)',
-              padding: '15px 36px',
-              borderRadius: '999px',
-            }}
-          >
-            Get Featured
-          </a>
+          <NoiseBackground gradientColors={['#8A3FFC', '#C8AAFF', '#F9B8D4', '#FFD4A8', '#ffffff']}>
+            <a
+              className="ia-btn-dark"
+              href="https://www.imagine.art/community"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-block',
+                fontSize: '15.5px',
+                fontWeight: 600,
+                textDecoration: 'none',
+                color: 'var(--clr-btn-dark-fg)',
+                background: 'var(--clr-btn-dark-bg)',
+                padding: '15px 36px',
+                borderRadius: '999px',
+              }}
+            >
+              Get Featured
+            </a>
+          </NoiseBackground>
         </RevealWrapper>
       </div>
     </section>

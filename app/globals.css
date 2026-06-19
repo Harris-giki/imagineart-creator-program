@@ -32,6 +32,8 @@
   --clr-btn-dark-bg: #0F0F0F;
   --clr-btn-dark-fg: #ffffff;
   --clr-icon-box:    rgba(0,0,0,.06);
+  /* Spotlight: visible purple on light cards */
+  --clr-spotlight:   rgba(138, 63, 252, 0.14);
 }
 
 html.dark {
@@ -50,6 +52,8 @@ html.dark {
   --clr-btn-dark-bg: #F0F0F0;
   --clr-btn-dark-fg: #0C0C0F;
   --clr-icon-box:    rgba(255,255,255,.09);
+  /* Spotlight: light lavender glow on dark cards — matches Aceternity original feel */
+  --clr-spotlight:   rgba(200, 170, 255, 0.22);
 }
 
 * {
@@ -277,6 +281,56 @@ html, body {
 }
 
 .ia-mc:hover .ia-mc-shine { transform: translateX(120%); }
+
+/* ─── Top Creator avatar hover ─── */
+.ia-tc-img-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  width: 104px;
+  height: 104px;
+  flex-shrink: 0;
+  transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease;
+}
+
+.ia-tc-img-wrap:hover {
+  transform: scale(1.10);
+  box-shadow: 0 8px 32px rgba(138, 63, 252, 0.30);
+}
+
+.ia-tc-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(112deg, transparent 32%, rgba(255,255,255,.26) 50%, transparent 68%);
+  transform: translateX(-130%);
+  transition: transform .72s cubic-bezier(.16,1,.3,1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.ia-tc-img-wrap:hover .ia-tc-shine { transform: translateX(130%); }
+
+/* ─── Community section pill buttons ─── */
+.ia-community-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-decoration: none;
+  color: var(--clr-fg);
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--clr-border);
+  background: var(--clr-card);
+  transition: border-color .25s ease, box-shadow .25s ease, transform .2s cubic-bezier(.16,1,.3,1);
+}
+
+.ia-community-btn:hover {
+  border-color: rgba(138, 63, 252, 0.45);
+  box-shadow: 0 0 0 3px rgba(138, 63, 252, 0.10);
+  transform: translateY(-2px);
+}
 
 /* ─── Responsive grid helpers ─── */
 .ia-grid-2col {

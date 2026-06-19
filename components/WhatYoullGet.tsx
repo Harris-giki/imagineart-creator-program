@@ -1,4 +1,5 @@
 import RevealWrapper from './RevealWrapper'
+import { CardSpotlight } from '@/components/ui/card-spotlight'
 
 const benefits = [
   {
@@ -81,7 +82,7 @@ export default function WhatYoullGet() {
         <RevealWrapper>
           <div className="ia-grid-2col">
             {benefits.map((b, i) => (
-              <div
+              <CardSpotlight
                 key={i}
                 style={{
                   display: 'flex',
@@ -132,7 +133,7 @@ export default function WhatYoullGet() {
                     {b.body}
                   </p>
                 </div>
-              </div>
+              </CardSpotlight>
             ))}
           </div>
         </RevealWrapper>

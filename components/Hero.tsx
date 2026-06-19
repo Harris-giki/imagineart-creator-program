@@ -1,3 +1,5 @@
+import { NoiseBackground } from '@/components/ui/noise-background'
+
 export default function Hero() {
   return (
     <header id="top" style={{ position: 'relative', overflow: 'hidden', marginTop: '57px' }}>
@@ -57,21 +59,24 @@ export default function Hero() {
           get early access to all new features, and stand among a hand-picked community of top AI creators.
         </p>
 
-        <a
-          href="#apply"
-          style={{
-            display: 'inline-block',
-            fontSize: '16px',
-            fontWeight: 600,
-            textDecoration: 'none',
-            color: '#161616',
-            background: '#fff',
-            padding: '15px 42px',
-            borderRadius: '999px',
-          }}
-        >
-          Join Now
-        </a>
+        <NoiseBackground gradientColors={['#8A3FFC', '#C8AAFF', '#F9B8D4', '#FFD4A8', '#ffffff']}>
+          <a
+            href="#apply"
+            style={{
+              display: 'inline-block',
+              fontSize: '16px',
+              fontWeight: 600,
+              textDecoration: 'none',
+              color: '#161616',
+              background: '#fff',
+              padding: '15px 42px',
+              borderRadius: '999px',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            Join Now
+          </a>
+        </NoiseBackground>
       </div>
 
       {/* Scroll-down arrow */}

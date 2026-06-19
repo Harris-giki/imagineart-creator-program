@@ -1,4 +1,5 @@
 import RevealWrapper from './RevealWrapper'
+import { NoiseBackground } from '@/components/ui/noise-background'
 
 export default function Enterprise() {
   return (
@@ -43,24 +44,26 @@ export default function Enterprise() {
             Refer agencies, production houses or in-house teams of 10 or more. Earn a referral bonus when they come on board. ImagineArt is the creative infrastructure modern teams are moving to.
           </p>
         </div>
-        <a
-          className="ia-btn-dark"
-          href="https://imagineart.notion.site/ImagineArt-Enterprise-Referral-Program-Creator-Partners-2ed0152cd76980dea449fa36e1c41569?source=copy_link"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            flex: 'none',
-            fontSize: '16px',
-            fontWeight: 600,
-            textDecoration: 'none',
-            color: 'var(--clr-btn-dark-fg)',
-            background: 'var(--clr-btn-dark-bg)',
-            padding: '16px 30px',
-            borderRadius: '999px',
-          }}
-        >
-          Refer a Team
-        </a>
+        <NoiseBackground gradientColors={['#8A3FFC', '#C8AAFF', '#F9B8D4', '#FFD4A8', '#ffffff']} style={{ flex: 'none' }}>
+          <a
+            className="ia-btn-dark"
+            href="https://imagineart.notion.site/ImagineArt-Enterprise-Referral-Program-Creator-Partners-2ed0152cd76980dea449fa36e1c41569?source=copy_link"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-block',
+              fontSize: '16px',
+              fontWeight: 600,
+              textDecoration: 'none',
+              color: 'var(--clr-btn-dark-fg)',
+              background: 'var(--clr-btn-dark-bg)',
+              padding: '16px 30px',
+              borderRadius: '999px',
+            }}
+          >
+            Refer a Team
+          </a>
+        </NoiseBackground>
       </RevealWrapper>
     </section>
   )
