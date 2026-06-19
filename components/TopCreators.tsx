@@ -1,4 +1,5 @@
 import { NoiseBackground } from '@/components/ui/noise-background'
+import SectionSparkles from '@/components/SectionSparkles'
 
 const creators = [
   { name: 'Iconic_Mind 👑',        handle: '@otamereoyen',          img: 'https://cdn.web.imagine.art/imagine-one/test/assets/top-creators/Iconic_Mind.png',         url: 'https://www.imagine.art/c/otamereoyen' },
@@ -23,19 +24,20 @@ export default function TopCreators() {
       <div style={{ maxWidth: '1100px', margin: '0 auto', textAlign: 'center' }}>
 
         {/* Heading */}
-        <div style={{ marginBottom: '64px' }}>
+        <div className="ia-sec-head">
           <h2
             style={{
               fontSize: 'clamp(28px, 3.8vw, 50px)',
               lineHeight: 1.06,
               fontWeight: 500,
               letterSpacing: '-.025em',
-              margin: '0 0 18px',
+              margin: '0 0 0',
               color: 'var(--clr-fg)',
             }}
           >
             Meet Our Top Creators
           </h2>
+          <SectionSparkles width="380px" style={{ margin: '0 auto -24px' }} />
           <p
             style={{
               fontSize: '16px',
@@ -43,6 +45,8 @@ export default function TopCreators() {
               color: 'rgba(255,255,255,0.44)',
               margin: '0 auto',
               maxWidth: '460px',
+              position: 'relative',
+              zIndex: 1,
             }}
           >
             Independent artists to agency teams. From every timezone, every discipline.
@@ -51,8 +55,7 @@ export default function TopCreators() {
 
         {/* Avatar grid */}
         <div
-          className="ia-creators-grid"
-          style={{ marginBottom: '64px' }}
+          className="ia-creators-grid ia-sec-head"
         >
           {creators.map((c, i) => (
             <a

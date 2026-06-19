@@ -2,6 +2,7 @@
 
 import RevealWrapper from './RevealWrapper'
 import { NoiseBackground } from '@/components/ui/noise-background'
+import SectionSparkles from '@/components/SectionSparkles'
 
 declare global {
   interface Window {
@@ -31,11 +32,13 @@ export default function Community() {
           >
             Learn and Grow with Us
           </h2>
+          <SectionSparkles width="min(540px, 100%)" style={{ margin: '0' }} />
         </RevealWrapper>
 
         <RevealWrapper className="ia-community-grid">
           {/* Host an event card */}
           <div
+            className="ia-community-card"
             style={{
               position: 'relative',
               overflow: 'hidden',
@@ -106,6 +109,7 @@ export default function Community() {
 
           {/* Live sessions card */}
           <div
+            className="ia-schedule-card"
             style={{
               borderRadius: '22px',
               border: '1px solid var(--clr-border)',
@@ -126,9 +130,9 @@ export default function Community() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               {[
-                { day: 'Wed', label: 'Office Hours', detail: '8–9 AM EDT · The team goes live and on-call — bring your questions, workflows, and ideas.' },
-                { day: 'Thu', label: 'Imagine with ImagineArt', detail: '9:30 PM EDT · Podcasts with top creators and filmmakers one week, live community challenges the next. Always something fresh.' },
-                { day: 'Fri', label: 'Expert Sessions', detail: '11 AM–12 PM EDT · Go hands-on with our Creative Technologists — real talk, Film Studio deep-dives, and workflow tips.' },
+                { day: 'Wed', label: 'Office Hours', detail: 'The team goes live — bring your questions, workflows, and ideas.' },
+                { day: 'Thu', label: 'Imagine with ImagineArt', detail: 'Podcasts with top creators and live community challenges.' },
+                { day: 'Fri', label: 'Expert Sessions', detail: 'Hands-on with Creative Technologists — Film Studio deep-dives and workflow tips.' },
               ].map((s, i) => (
                 <div
                   key={i}

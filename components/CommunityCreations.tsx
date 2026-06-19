@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import RevealWrapper from './RevealWrapper'
 import { tiles } from '@/lib/data'
+import SectionSparkles from '@/components/SectionSparkles'
 
 const SPEED = 0.7
 
@@ -110,12 +111,13 @@ export default function CommunityCreations() {
               lineHeight: 1.1,
               fontWeight: 500,
               letterSpacing: '-.02em',
-              margin: '0 0 14px',
+              margin: '0 0 0',
               color: 'var(--clr-fg)',
             }}
           >
             Community Creations
           </h2>
+          <SectionSparkles width="min(420px, 95%)" style={{ margin: '0 auto -24px' }} />
           <p
             style={{
               fontSize: '16px',
@@ -124,6 +126,8 @@ export default function CommunityCreations() {
               margin: '0 auto',
               maxWidth: '520px',
               fontWeight: 400,
+              position: 'relative',
+              zIndex: 1,
             }}
           >
             Work made by our partners across the globe. Real creatives using ImagineArt to push what&apos;s possible.
@@ -147,12 +151,14 @@ export default function CommunityCreations() {
                   <img
                     src={tile.img}
                     alt={tile.name}
+                    loading="lazy"
+                    decoding="async"
                     style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   />
                 )}
                 {tile.video && (
                   <video
-                    autoPlay muted loop playsInline
+                    autoPlay muted loop playsInline preload="none"
                     src={tile.video}
                     style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   />

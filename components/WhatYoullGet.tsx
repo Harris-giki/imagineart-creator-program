@@ -1,4 +1,5 @@
 import { CardSpotlight } from '@/components/ui/card-spotlight'
+import SectionSparkles from '@/components/SectionSparkles'
 
 const benefits = [
   {
@@ -29,19 +30,20 @@ export default function WhatYoullGet() {
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
 
         {/* Heading */}
-        <div style={{ textAlign: 'center', marginBottom: '56px' }}>
+        <div className="ia-sec-head" style={{ textAlign: 'center' }}>
           <h2
             style={{
               fontSize: 'clamp(28px, 3.8vw, 50px)',
               lineHeight: 1.06,
               fontWeight: 500,
               letterSpacing: '-.025em',
-              margin: '0 0 16px',
+              margin: '0 0 0',
               color: 'var(--clr-fg)',
             }}
           >
             What&apos;s In It For You
           </h2>
+          <SectionSparkles width="360px" style={{ margin: '0 auto -24px' }} />
           <p
             style={{
               fontSize: '17px',
@@ -49,6 +51,8 @@ export default function WhatYoullGet() {
               color: 'rgba(255,255,255,0.44)',
               margin: '0 auto',
               maxWidth: '460px',
+              position: 'relative',
+              zIndex: 1,
             }}
           >
             Everything you need to create boldly, grow faster, and turn your craft into income.
@@ -60,17 +64,20 @@ export default function WhatYoullGet() {
           {benefits.map((b) => (
             <CardSpotlight
               key={b.title}
+              spotlightColor="rgba(200,170,255,0.32)"
               style={{
-                background: 'var(--clr-bg-2)',
+                background: `radial-gradient(ellipse at 75% 15%, rgba(138,63,252,0.18) 0%, rgba(20,20,23,0) 55%),
+                             radial-gradient(ellipse at 25% 85%, rgba(100,40,200,0.12) 0%, rgba(20,20,23,0) 50%),
+                             var(--clr-bg-2)`,
                 borderRadius: '20px',
-                border: '1px solid var(--clr-border)',
+                border: '1px solid rgba(138,63,252,0.18)',
                 padding: '36px 32px',
               }}
             >
               <p
                 style={{
                   fontSize: '20px',
-                  fontWeight: 700,
+                  fontWeight: 600,
                   color: '#ffffff',
                   letterSpacing: '-.018em',
                   lineHeight: 1.2,

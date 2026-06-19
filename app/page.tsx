@@ -16,14 +16,29 @@ export default function Page() {
     <main style={{ background: 'var(--clr-bg)', color: 'var(--clr-fg)', overflowX: 'hidden', position: 'relative' }}>
       <Nav />
       <Hero />
-      <WhoItsFor />
-      <WhatYoullGet />
-      <TopCreators />
-      <Community />
-      <StatsBand />
-      <Enterprise />
-      <CommunityCreations />
-      <FAQ />
+
+      {/* Grid background section — starts after hero, ends before footer */}
+      <div className="ia-grid-wrapper">
+        {/* Lightning streaks */}
+        <div className="ia-grid-lightning-container" aria-hidden="true">
+          <span className="ia-lightning ia-l1" />
+          <span className="ia-lightning ia-l2" />
+          <span className="ia-lightning ia-l3" />
+          <span className="ia-lightning ia-l4" />
+          <span className="ia-lightning ia-l5" />
+          <span className="ia-lightning ia-l6" />
+        </div>
+
+        <WhoItsFor />
+        <WhatYoullGet />
+        <TopCreators />
+        <Community />
+        <StatsBand />
+        <Enterprise />
+        <CommunityCreations />
+        <FAQ />
+      </div>
+
       <Footer />
       <ApplyModal />
     </main>

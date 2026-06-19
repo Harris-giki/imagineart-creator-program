@@ -336,14 +336,14 @@ html, body {
 }
 
 .ia-hero-overlay {
-  /* Clear window in the middle so the video shines through; dark at top (nav) and bottom (text) */
+  /* Clear window in the middle so the video shines through; dark at top (nav) and fully black at bottom */
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.48) 0%,
     rgba(0, 0, 0, 0.08) 22%,
     rgba(0, 0, 0, 0.04) 45%,
-    rgba(0, 0, 0, 0.52) 72%,
-    rgba(0, 0, 0, 0.78) 100%
+    rgba(0, 0, 0, 0.65) 72%,
+    rgba(0, 0, 0, 1.0) 100%
   );
   z-index: 2;
 }
@@ -502,6 +502,32 @@ html, body {
   transform: translateY(-2px);
 }
 
+/* ─── WhoItsFor editorial bento grid ─── */
+.ia-who-bento {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  grid-template-rows: 295px 295px;
+  gap: 8px;
+}
+.ia-who-bento-main {
+  grid-row: span 2;
+}
+
+@media (max-width: 860px) {
+  .ia-who-bento {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 340px 240px;
+  }
+}
+
+@media (max-width: 600px) {
+  .ia-who-bento {
+    grid-template-columns: 1fr;
+    grid-template-rows: 340px 240px 240px;
+  }
+  .ia-who-bento-main { grid-row: span 1; }
+}
+
 /* ─── Responsive grid helpers ─── */
 .ia-grid-2col {
   display: grid;
@@ -605,6 +631,9 @@ html:not(.dark) .ia-nav-scrolled .ia-logo-img { filter: invert(1); }
 .ia-sec    { padding: 110px 40px; }
 .ia-sec-sm { padding: 88px 40px; }
 
+/* ─── Section heading utility — responsive margin-bottom ─── */
+.ia-sec-head { margin-bottom: 56px; }
+
 /* ─── Responsive breakpoints ─── */
 @media (max-width: 1024px) {
   .ia-grid-4col       { grid-template-columns: repeat(2, 1fr); gap: 20px; }
@@ -616,6 +645,7 @@ html:not(.dark) .ia-nav-scrolled .ia-logo-img { filter: invert(1); }
 @media (max-width: 860px) {
   .ia-sec              { padding: 72px 24px; }
   .ia-sec-sm           { padding: 56px 24px; }
+  .ia-sec-head         { margin-bottom: 40px; }
   .ia-grid-3col        { grid-template-columns: repeat(2, 1fr); }
   .ia-creators-grid    { grid-template-columns: repeat(3, 1fr); gap: 28px 16px; }
   .ia-community-grid   { grid-template-columns: 1fr; }
@@ -631,14 +661,27 @@ html:not(.dark) .ia-nav-scrolled .ia-logo-img { filter: invert(1); }
   .ia-footer-pad       { padding: 48px 24px 32px !important; }
   .ia-marquee-wrap     { margin: 0 -24px; }
   .ia-persona-img      { height: 220px !important; }
+  .ia-community-card   { padding: 40px 32px !important; }
+  .ia-stats-inner      { padding-top: 40px !important; }
+}
+
+@media (max-width: 600px) {
+  .ia-sec              { padding: 60px 20px; }
+  .ia-sec-sm           { padding: 48px 20px; }
+  .ia-sec-head         { margin-bottom: 32px; }
+  .ia-stats-inner      { padding-top: 32px !important; }
+  .ia-community-card   { padding: 32px 24px !important; }
+  .ia-schedule-card    { padding: 24px !important; }
 }
 
 /* ─── Hero mobile ─── */
 @media (max-width: 680px) {
-  .ia-hero-content { padding: 0 24px 12%; }
-  .ia-hero-h1   { font-size: clamp(30px, 9vw, 48px); margin-bottom: 16px; }
-  .ia-hero-p    { font-size: 13.5px; max-width: 300px; margin-bottom: 20px; }
+  .ia-hero-content { padding: 0 24px 10%; text-align: center; }
+  .ia-hero-h1   { font-size: clamp(30px, 9vw, 48px); margin-bottom: 16px; text-align: center; }
+  .ia-hero-p    { font-size: 13.5px; max-width: 300px; margin-bottom: 20px; text-align: center; }
   .ia-hero-arrow { display: none; }
+  /* Shift image focus to the more interesting lower-centre portion */
+  .ia-hero-img  { object-position: 50% 62% !important; }
 }
 
 /* ─── Carousel: tighter track padding + narrower fades on mobile ─── */
@@ -663,18 +706,21 @@ html:not(.dark) .ia-nav-scrolled .ia-logo-img { filter: invert(1); }
 }
 
 @media (max-width: 480px) {
-  .ia-sec              { padding: 56px 16px; }
-  .ia-sec-sm           { padding: 44px 16px; }
+  .ia-sec              { padding: 44px 16px; }
+  .ia-sec-sm           { padding: 36px 16px; }
+  .ia-sec-head         { margin-bottom: 28px; }
   /* Hero: keep 100% height from 680px rule — only tighten padding */
-  .ia-hero-content     { padding: 0 16px; }
+  .ia-hero-content     { padding: 0 16px 28px; }
   .ia-hero-p           { max-width: 280px; }
   .ia-enterprise-inner { padding: 28px 18px !important; }
   .ia-enterprise-outer { padding: 0 16px 64px !important; }
   .ia-footer-pad       { padding: 36px 16px 24px !important; }
   .ia-marquee-wrap     { margin: 0 -16px; }
   .ia-persona-img      { height: 200px !important; }
-  .ia-community-grid > * { padding: 28px 22px !important; }
-  .ia-faq-q span:first-child { font-size: 16px !important; }
+  .ia-community-card   { padding: 28px 20px !important; }
+  .ia-schedule-card    { padding: 20px !important; }
+  .ia-stats-inner      { padding-top: 28px !important; }
+  .ia-faq-section-pb   { padding-bottom: 60px !important; }
 }
 
 @media (max-width: 420px) {
@@ -747,22 +793,37 @@ html:not(.dark) .ia-nav-scrolled .ia-logo-img { filter: invert(1); }
 .ia-events-link {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
   font-size: 14.5px;
   font-weight: 500;
   white-space: nowrap;
   text-decoration: none;
-  color: var(--clr-fg);
-  padding: 6px 13px;
-  border-radius: 999px;
-  background: linear-gradient(135deg, rgba(138,63,252,.10), rgba(198,130,255,.08));
-  border: 1px solid rgba(138,63,252,.22);
-  transition: background .2s ease, border-color .2s ease;
+  color: rgba(255,255,255,0.82);
+  transition: color .2s ease;
 }
 
-.ia-events-link:hover {
-  background: linear-gradient(135deg, rgba(138,63,252,.18), rgba(198,130,255,.14));
-  border-color: rgba(138,63,252,.5);
+.ia-events-link:hover { color: #ffffff; }
+
+.ia-events-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.38) 0%,
+    rgba(255,255,255,0.38) 30%,
+    rgba(225,205,255,0.92) 44%,
+    rgba(255,255,255,1.00) 50%,
+    rgba(225,205,255,0.92) 56%,
+    rgba(255,255,255,0.38) 70%,
+    rgba(255,255,255,0.38) 100%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: ia-text-shimmer 2.5s linear infinite;
+}
+
+@keyframes ia-text-shimmer {
+  0%   { background-position: 100% center; }
+  100% { background-position: 0% center; }
 }
 
 .ia-btn-dark {
@@ -788,6 +849,69 @@ html.dark .ia-btn-dark:hover {
 
 .ia-faq-q:hover {
   color: #8A3FFC;
+}
+
+.ia-faq-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+.ia-faq-heading { width: 320px; flex-shrink: 0; }
+
+@media (max-width: 860px) {
+  .ia-faq-layout  { flex-direction: column; gap: 40px; }
+  .ia-faq-heading { width: 100%; }
+}
+
+/* ─── Footer layout ─── */
+.ia-footer-top {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.ia-footer-brand {
+  width: 160px;
+  flex-shrink: 0;
+}
+
+.ia-footer-columns {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 32px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ia-footer-bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+@media (max-width: 1024px) {
+  .ia-footer-columns { grid-template-columns: repeat(3, 1fr); gap: 28px; }
+}
+
+@media (max-width: 680px) {
+  .ia-footer-top     { flex-direction: column; }
+  .ia-footer-brand   { width: 100%; flex-direction: row; display: flex; justify-content: space-between; align-items: flex-start; }
+  .ia-footer-columns { grid-template-columns: repeat(2, 1fr); gap: 24px 20px; }
+  .ia-footer-bottom  { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+@media (max-width: 420px) {
+  .ia-footer-columns { grid-template-columns: 1fr 1fr; gap: 20px 16px; }
 }
 
 .ia-chip-pop {
@@ -844,3 +968,78 @@ html.dark .ia-btn-dark:hover {
 html.dark .ia-world-map-path {
   fill: rgba(255, 255, 255, 0.07);
 }
+
+/* ─── Mobile nav fullscreen animation ─── */
+@keyframes ia-mobile-in {
+  from { opacity: 0; transform: scale(1.015); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ─── Grid background wrapper (post-hero → pre-footer) ─── */
+.ia-grid-wrapper {
+  position: relative;
+  background-color: var(--clr-bg);
+  background-image:
+    linear-gradient(rgba(90, 60, 200, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(90, 60, 200, 0.08) 1px, transparent 1px);
+  background-size: 90px 90px;
+}
+
+/* Make direct section children transparent so grid shows through */
+.ia-grid-wrapper > section {
+  background: transparent !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Lightning streaks ─── */
+.ia-grid-lightning-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.ia-lightning {
+  position: absolute;
+  top: 0;
+  width: 2px;
+  height: 200px;
+  border-radius: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(200,170,255,0.8) 20%,
+    rgba(155,85,255,1)   50%,
+    rgba(200,170,255,0.8) 80%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 5px 2px rgba(180,100,255,0.38),
+    0 0 16px 5px rgba(140,55,255,0.18);
+  opacity: 0;
+  animation: ia-lightning-drop linear infinite;
+}
+
+/* Burst group A — fires near cycle start */
+.ia-l1 { left: 22.5vw; animation-duration: 12s; animation-delay: 0s;    }
+.ia-l2 { left: 45vw;   animation-duration: 12s; animation-delay: 0.09s; }
+.ia-l3 { left: 67.5vw; animation-duration: 12s; animation-delay: 0.05s; }
+
+/* Burst group B — fires 6 s into the cycle */
+.ia-l4 { left: 33.75vw; animation-duration: 12s; animation-delay: 6s;    }
+.ia-l5 { left: 56.25vw; animation-duration: 12s; animation-delay: 6.07s; }
+.ia-l6 { left: 78.75vw; animation-duration: 12s; animation-delay: 6.04s; }
+
+@keyframes ia-lightning-drop {
+  0%    { transform: translateY(-220px); opacity: 0;   }
+  1%    { transform: translateY(-200px); opacity: 0;   }
+  2%    { transform: translateY(-180px); opacity: 0.95;}
+  7%    { transform: translateY(110vh);  opacity: 0.4; }
+  8%    { transform: translateY(110vh);  opacity: 0;   }
+  100%  { transform: translateY(110vh);  opacity: 0;   }
+}
+
+/* ─── Nav link gap cleanup ─── */
+.ia-nav-links { gap: 2px; }

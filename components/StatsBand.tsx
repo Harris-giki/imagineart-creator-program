@@ -62,6 +62,7 @@ export default function StatsBand() {
       <div
         ref={containerRef}
         id="ia-stats"
+        className="ia-stats-inner"
         style={{
           maxWidth: '1100px',
           margin: '0 auto',

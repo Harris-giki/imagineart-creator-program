@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { NoiseBackground } from '@/components/ui/noise-background'
 
 function WordReveal({ text, baseDelay = 0 }: { text: string; baseDelay?: number }) {
@@ -27,12 +28,14 @@ export default function Hero() {
         className="ia-hero-media"
         style={{ position: 'absolute', inset: 0, overflow: 'hidden', zIndex: 0 }}
       >
-        <img
+        <Image
           src="https://cdn.web.imagine.art/imagine-one/test/assets/hero-banner.png"
           alt=""
+          fill
+          priority
+          sizes="100vw"
           className="ia-hero-img"
-          fetchPriority="high"
-          decoding="async"
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
         />
       </div>
 

@@ -46,7 +46,7 @@ export function CardContainer({
           onMouseEnter={() => setIsMouseEntered(true)}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          style={{ transformStyle: 'preserve-3d', transition: 'transform 0.12s ease-out', width: '100%' }}
+          style={{ transformStyle: 'preserve-3d', transition: 'transform 0.12s ease-out', width: '100%', height: '100%' }}
         >
           {children}
         </div>
