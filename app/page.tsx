@@ -1,7 +1,7 @@
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
-import WhatYoullGet from '@/components/WhatYoullGet'
 import WhoItsFor from '@/components/WhoItsFor'
+import WhatYoullGet from '@/components/WhatYoullGet'
 import TopCreators from '@/components/TopCreators'
 import Community from '@/components/Community'
 import StatsBand from '@/components/StatsBand'
@@ -16,8 +16,8 @@ export default function Page() {
     <main style={{ background: 'var(--clr-bg)', color: 'var(--clr-fg)', overflowX: 'hidden', position: 'relative' }}>
       <Nav />
       <Hero />
-      <WhatYoullGet />
       <WhoItsFor />
+      <WhatYoullGet />
       <TopCreators />
       <Community />
       <StatsBand />

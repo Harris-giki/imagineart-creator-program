@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { ThemeProvider } from '@/contexts/ThemeContext'
+import LenisProvider from '@/components/LenisProvider'
+import ScrollAnimations from '@/components/ScrollAnimations'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -13,23 +14,25 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
-        {/* Establish CDN connection as early as possible — eliminates TCP+TLS latency for all CDN assets */}
         <link rel="preconnect" href="https://cdn.web.imagine.art" />
         <link rel="dns-prefetch" href="https://cdn.web.imagine.art" />
-        {/* Preload hero banner — LCP element, must arrive before first paint */}
         <link
           rel="preload"
           href="https://cdn.web.imagine.art/imagine-one/test/assets/hero-banner.png"
           as="image"
           fetchPriority="high"
         />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
       </head>
       <body>
-        {/* Prevent flash of wrong theme */}
-        <script dangerouslySetInnerHTML={{ __html: `(function(){try{if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark');}catch(e){}})()` }} />
-        <ThemeProvider>{children}</ThemeProvider>
+        <LenisProvider>
+          {children}
+          <ScrollAnimations />
+        </LenisProvider>
         <Script src="https://tally.so/widgets/embed.js" strategy="lazyOnload" />
       </body>
     </html>

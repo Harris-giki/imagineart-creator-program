@@ -1,94 +1,137 @@
 import { NoiseBackground } from '@/components/ui/noise-background'
 
+function WordReveal({ text, baseDelay = 0 }: { text: string; baseDelay?: number }) {
+  const words = text.split(' ')
+  return (
+    <>
+      {words.map((word, i) => (
+        <span key={i}>
+          <span className="ia-word-mask">
+            <span className="ia-word-inner" style={{ animationDelay: `${baseDelay + i * 0.1}s` }}>
+              {word}
+            </span>
+          </span>
+          {i < words.length - 1 ? ' ' : ''}
+        </span>
+      ))}
+    </>
+  )
+}
+
 export default function Hero() {
   return (
-    <header id="top" style={{ position: 'relative', overflow: 'hidden', marginTop: '57px' }}>
+    <header id="top" style={{ position: 'relative', overflow: 'hidden', height: '100vh', background: '#000' }}>
 
-      {/* Image — desktop: natural height; mobile: absolute cover via CSS */}
-      <img
-        src="https://cdn.web.imagine.art/imagine-one/test/assets/hero-banner.png"
-        alt=""
-        className="ia-hero-img"
-        fetchPriority="high"
-        decoding="async"
+      {/* Media wrapper — GSAP scales this on scroll for cinematic zoom */}
+      <div
+        className="ia-hero-media"
+        style={{ position: 'absolute', inset: 0, overflow: 'hidden', zIndex: 0 }}
+      >
+        <img
+          src="https://cdn.web.imagine.art/imagine-one/test/assets/hero-banner.png"
+          alt=""
+          className="ia-hero-img"
+          fetchPriority="high"
+          decoding="async"
+        />
+      </div>
+
+      {/* Cinematic gradient overlay */}
+      <div className="ia-hero-overlay" style={{ position: 'absolute', inset: 0, zIndex: 2 }} />
+
+      {/* Dark veil — fades in as you scroll away from the hero */}
+      <div
+        id="ia-hero-dark-fade"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          background: '#000',
+          opacity: 0,
+          zIndex: 6,
+          pointerEvents: 'none',
+        }}
       />
 
-      {/* Overlay */}
-      <div className="ia-hero-overlay" style={{ position: 'absolute', inset: 0 }} />
+      {/* Aurora colour blobs */}
+      <div className="ia-hero-aurora" aria-hidden="true" style={{ zIndex: 3 }}>
+        <div className="ia-aurora-orb ia-aurora-orb-1" />
+        <div className="ia-aurora-orb ia-aurora-orb-2" />
+        <div className="ia-aurora-orb ia-aurora-orb-3" />
+      </div>
 
-      {/*
-        Content — layout properties (height, justify-content, padding) live in
-        .ia-hero-content CSS class so media queries can override them freely.
-        Only non-overridden structural props stay inline.
-      */}
+      {/* Hero copy */}
       <div
         className="ia-hero-content"
         style={{
           position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
+          top: 0, left: 0, right: 0, bottom: 0,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           textAlign: 'center',
           color: '#fff',
+          zIndex: 4,
         }}
       >
         <h1 className="ia-hero-h1">
-          <span style={{ display: 'block' }}>Creative Space for</span>
+          <span style={{ display: 'block' }}>
+            <WordReveal text="Creative Space for" baseDelay={0.1} />
+          </span>
           <span
             style={{
               display: 'block',
-              fontWeight: 700,
               background: 'linear-gradient(95deg, #FFD4A8, #ffffff, #F9B8D4, #C8AAFF, #ffffff, #FFD4A8)',
               backgroundSize: '300% 100%',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-              animation: 'ia-gradient-flow 6s linear infinite',
+              animation: 'ia-gradient-flow 6s linear infinite, ia-hero-line2-in 0.9s cubic-bezier(.16,1,.3,1) 0.45s both',
             }}
           >
             Visionary Creators
           </span>
         </h1>
 
-        <p className="ia-hero-p">
+        <p
+          className="ia-hero-p"
+          style={{ animation: 'ia-fade-up 0.85s cubic-bezier(.16,1,.3,1) 0.75s both' }}
+        >
           This is where ambitious creators get the fuel to go further. Earn up to 200,000 credits,
           get early access to all new features, and stand among a hand-picked community of top AI creators.
         </p>
 
-        <NoiseBackground gradientColors={['#8A3FFC', '#C8AAFF', '#F9B8D4', '#FFD4A8', '#ffffff']}>
-          <a
-            href="#apply"
-            style={{
-              display: 'inline-block',
-              fontSize: '16px',
-              fontWeight: 600,
-              textDecoration: 'none',
-              color: '#161616',
-              background: '#fff',
-              padding: '15px 42px',
-              borderRadius: '999px',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            Join Now
-          </a>
-        </NoiseBackground>
+        <div style={{ animation: 'ia-pop-in 0.7s cubic-bezier(.16,1,.3,1) 1s both' }}>
+          <NoiseBackground gradientColors={['#8A3FFC', '#C8AAFF', '#F9B8D4', '#FFD4A8', '#ffffff']}>
+            <a
+              href="#apply"
+              style={{
+                display: 'inline-block',
+                fontSize: '16px',
+                fontWeight: 600,
+                textDecoration: 'none',
+                color: '#161616',
+                background: '#fff',
+                padding: '15px 42px',
+                borderRadius: '999px',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              Join Now
+            </a>
+          </NoiseBackground>
+        </div>
       </div>
 
-      {/* Scroll-down arrow */}
+      {/* Scroll arrow */}
       <a
-        href="#rewards"
-        aria-label="Scroll to rewards"
+        href="#who"
+        aria-label="Scroll down"
         className="ia-hero-arrow"
         style={{
           position: 'absolute',
           bottom: '28px',
           right: '32px',
-          zIndex: 2,
+          zIndex: 5,
           width: '46px',
           height: '46px',
           borderRadius: '50%',
