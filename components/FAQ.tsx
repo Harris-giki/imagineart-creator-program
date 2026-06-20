@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { faqData } from '@/lib/data'
-import SectionSparkles from '@/components/SectionSparkles'
+import SectionHeading from '@/components/SectionHeading'
 
 declare global {
   interface Window {
@@ -161,44 +161,25 @@ export default function FAQ() {
   return (
     <section
       id="faq"
-      className="ia-sec ia-faq-section-pb"
+      className="ia-sec ia-faq-outer"
       style={{ borderTop: '1px solid var(--clr-border)' }}
     >
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
         <div className="ia-faq-layout">
 
-          {/* Left: heading */}
+          {/* Left column: compact heading — size md, parallel to questions */}
           <div className="ia-faq-heading">
-            <h2
-              style={{
-                fontSize: 'clamp(30px, 3.8vw, 50px)',
-                lineHeight: 1.05,
-                fontWeight: 500,
-                letterSpacing: '-.025em',
-                margin: '0 0 0',
-                color: 'var(--clr-fg)',
-              }}
-            >
-              Got any questions{' '}
-              <span style={{ color: 'rgba(237,237,232,0.28)' }}>left?</span>
-            </h2>
-            <SectionSparkles width="min(340px, 100%)" style={{ margin: '0 0 -18px' }} />
-            <p
-              style={{
-                fontSize: '16px',
-                lineHeight: 1.7,
-                color: 'var(--clr-fg-2)',
-                margin: 0,
-                maxWidth: '30ch',
-                position: 'relative',
-                zIndex: 1,
-              }}
-            >
-              We&apos;ve answered the most common questions below.
-            </p>
+            <SectionHeading
+              headline="Got any questions"
+              accent="left?"
+              accentColor="gray"
+              align="left"
+              size="md"
+              subline="We've answered the most common questions below."
+            />
           </div>
 
-          {/* Right: accordion */}
+          {/* Right column: accordion */}
           <div style={{ flex: 1, minWidth: 0, borderTop: '1px solid var(--clr-border)' }}>
             {faqData.map((f, i) => (
               <FaqRow

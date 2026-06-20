@@ -156,6 +156,7 @@ export default function Nav() {
               className="ia-nav-cta"
               href="#apply"
               style={{
+                display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 height: '34px',

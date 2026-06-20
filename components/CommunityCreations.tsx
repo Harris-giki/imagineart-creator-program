@@ -1,188 +1,238 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import RevealWrapper from './RevealWrapper'
+import { useRef, useState, useEffect, useCallback } from 'react'
+import {
+  useScroll, useTransform, motion, AnimatePresence, useMotionValueEvent,
+} from 'framer-motion'
 import { tiles } from '@/lib/data'
-import SectionSparkles from '@/components/SectionSparkles'
-
-const SPEED = 0.7
-
-interface CardDims { w: number; h: number; gap: number; sigma: number }
-
-function getDims(vw: number): CardDims {
-  if (vw < 480)  return { w: 160, h: 235, gap: 10, sigma: 0.40 }
-  if (vw < 700)  return { w: 210, h: 305, gap: 12, sigma: 0.30 }
-  return               { w: 260, h: 360, gap: 12, sigma: 0.24 }
-}
+import SectionHeading from '@/components/SectionHeading'
 
 export default function CommunityCreations() {
-  const wrapRef  = useRef<HTMLDivElement>(null)
+  const outerRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
-  const offsetRef = useRef(0)
-  const rafRef   = useRef<number>()
-  const hoveredRef = useRef<number>(-1)
-  const hoverScalesRef = useRef<number[]>([])
-  // dimsRef drives the RAF loop — updated on resize without re-mounting
-  const dimsRef = useRef<CardDims>(getDims(typeof window !== 'undefined' ? window.innerWidth : 1200))
 
-  const [dims, setDims] = useState<CardDims>(dimsRef.current)
+  // outerH  = xRange + 100vh  (the total height of the scroll space)
+  // xRange  = trackScrollWidth - viewportWidth  (how far we translate)
+  const [outerH,    setOuterH]    = useState<number | null>(null)
+  const [xRange,    setXRange]    = useState(0)
+  const [lbIdx,     setLbIdx]     = useState<number | null>(null)
+  const [activeIdx, setActiveIdx] = useState(0)
+  // SSR-safe default: passive until we detect fine pointer + no reduced-motion
+  const [passive,   setPassive]   = useState(true)
 
-  const tripled = [...tiles, ...tiles, ...tiles]
-
-  // Sync responsive dims on resize
   useEffect(() => {
-    const update = () => {
-      const next = getDims(window.innerWidth)
-      dimsRef.current = next
-      setDims({ ...next })
-    }
-    update()
-    window.addEventListener('resize', update, { passive: true })
-    return () => window.removeEventListener('resize', update)
+    const noMotion  = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const coarsePtr = window.matchMedia('(pointer: coarse)').matches
+    setPassive(noMotion || coarsePtr)
   }, [])
 
-  // Animation loop — re-initialises whenever card size changes
-  useEffect(() => {
-    const wrap  = wrapRef.current
+  // Measure the track's real scrollWidth so the outer height is exact
+  const measure = useCallback(() => {
     const track = trackRef.current
-    if (!wrap || !track) return
-    const cards = Array.from(track.children) as HTMLElement[]
+    if (!track) return
+    const trackW = track.scrollWidth
+    const vw     = window.innerWidth
+    const vh     = window.innerHeight
+    const range  = Math.max(0, trackW - vw)
+    setXRange(range)
+    setOuterH(range + vh)
+  }, [])
 
-    hoverScalesRef.current = new Array(cards.length).fill(1)
-
-    const { w, gap, sigma: sigmaFactor } = dimsRef.current
-    const stride   = w + gap
-    const loopLen  = tiles.length * stride
-    const wrapW    = wrap.offsetWidth
-    const startI   = Math.max(0, Math.ceil((wrapW / 2 - w / 2) / stride))
-    offsetRef.current = startI * stride + w / 2 - wrapW / 2
-
-    const tick = () => {
-      const { w: cw, gap: cg, sigma: csf } = dimsRef.current
-      const cStride  = cw + cg
-      const cLoopLen = tiles.length * cStride
-
-      offsetRef.current += SPEED
-      if (offsetRef.current >= cLoopLen) offsetRef.current -= cLoopLen
-
-      const offset = offsetRef.current
-      const ww     = wrap.offsetWidth
-      const center = ww / 2
-      const sigma  = ww * csf
-
-      track.style.transform = `translateX(-${offset}px)`
-
-      cards.forEach((card, i) => {
-        const cx   = i * cStride + cw / 2 - offset
-        const dist = Math.abs(cx - center)
-        const t    = Math.exp(-(dist * dist) / (2 * sigma * sigma))
-
-        const scale   = 0.78 + t * 0.5
-        const ry      = (cx < center ? -1 : 1) * (1 - t) * 12
-        const opacity = 0.18 + t * 0.82
-
-        // Smooth hover lerp
-        const targetHover = hoveredRef.current === i ? 1.13 : 1.0
-        hoverScalesRef.current[i] += (targetHover - hoverScalesRef.current[i]) * 0.1
-        const finalScale = scale * hoverScalesRef.current[i]
-
-        card.style.transform  = `scale(${finalScale}) perspective(700px) rotateY(${ry}deg)`
-        card.style.zIndex     = String(Math.round(t * 10))
-        card.style.opacity    = opacity.toFixed(2)
-        card.style.boxShadow  = t > 0.25
-          ? `0 ${Math.round(t * 36)}px ${Math.round(t * 72)}px rgba(0,0,0,${(t * 0.28).toFixed(2)})`
-          : ''
-      })
-
-      rafRef.current = requestAnimationFrame(tick)
+  useEffect(() => {
+    if (passive) return
+    // Wait one frame for CSS layout + image placeholders to settle
+    const raf = requestAnimationFrame(() => {
+      const t = setTimeout(measure, 40)
+      return () => clearTimeout(t)
+    })
+    const ro = new ResizeObserver(measure)
+    ro.observe(document.documentElement)
+    window.addEventListener('resize', measure, { passive: true })
+    return () => {
+      cancelAnimationFrame(raf)
+      ro.disconnect()
+      window.removeEventListener('resize', measure)
     }
+  }, [passive, measure])
 
-    rafRef.current = requestAnimationFrame(tick)
-    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
-  }, [dims.w]) // re-mount animation when card width changes
+  // Scroll progress across the tall outer section (0 when top hits viewport top,
+  // 1 when bottom hits viewport bottom — exactly xRange px of scrolling)
+  const { scrollYProgress } = useScroll({
+    target: outerRef,
+    offset: ['start start', 'end end'],
+  })
+
+  // Map progress 0→1 to translateX 0→−xRange
+  // xRange is React state so useTransform picks up the latest value on re-render
+  const x = useTransform(scrollYProgress, [0, 1], [0, -xRange])
+
+  // Drive the progress indicator without a separate scroll listener
+  useMotionValueEvent(scrollYProgress, 'change', (p) => {
+    setActiveIdx(Math.min(tiles.length - 1, Math.floor(p * tiles.length)))
+  })
+
+  // Lightbox: Escape to close, scroll-lock while open
+  useEffect(() => {
+    if (lbIdx === null) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setLbIdx(null) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [lbIdx])
+  useEffect(() => {
+    document.body.style.overflow = lbIdx !== null ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [lbIdx])
+
+  const activeTile = lbIdx !== null ? tiles[lbIdx] : null
 
   return (
-    <section className="ia-sec-sm" style={{ background: 'var(--clr-bg)', overflowX: 'clip' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <RevealWrapper style={{ textAlign: 'center', marginBottom: '48px' }}>
-          <h2
-            style={{
-              fontSize: 'clamp(26px,3.4vw,44px)',
-              lineHeight: 1.1,
-              fontWeight: 500,
-              letterSpacing: '-.02em',
-              margin: '0 0 0',
-              color: 'var(--clr-fg)',
-            }}
-          >
-            Community Creations
-          </h2>
-          <SectionSparkles width="min(420px, 95%)" style={{ margin: '0 auto -24px' }} />
-          <p
-            style={{
-              fontSize: '16px',
-              lineHeight: 1.65,
-              color: 'var(--clr-fg-2)',
-              margin: '0 auto',
-              maxWidth: '520px',
-              fontWeight: 400,
-              position: 'relative',
-              zIndex: 1,
-            }}
-          >
-            Work made by our partners across the globe. Real creatives using ImagineArt to push what&apos;s possible.
-          </p>
-        </RevealWrapper>
-      </div>
+    <>
+      {/*
+       * OUTER — tall scroll space.
+       * height = xRange + 100vh so there is ZERO dead/blank scroll after the
+       * last image clears the viewport.  Unset (auto) while passive so mobile
+       * gets natural flow.
+       */}
+      <div
+        ref={outerRef}
+        className="ia-cc-outer"
+        style={!passive && outerH !== null ? { height: `${outerH}px` } : undefined}
+      >
+        {/*
+         * STICKY CONTAINER — 100vh, sticks at top:0 for exactly xRange px of
+         * scroll, then releases to the next section.
+         */}
+        <div className={`ia-cc-sticky${passive ? ' ia-cc-passive' : ''}`}>
 
-      <div style={{ position: 'relative' }}>
-        <div ref={wrapRef} className="ia-marquee-wrap">
-          <div ref={trackRef} className="ia-marquee-track">
-            {tripled.map((tile, i) => (
-              <div
-                key={i}
-                className="ia-mc"
-                onClick={() => window.open(tile.url, '_blank', 'noopener,noreferrer')}
-                onMouseEnter={() => { hoveredRef.current = i }}
-                onMouseLeave={() => { hoveredRef.current = -1 }}
-                style={{ width: `${dims.w}px`, height: `${dims.h}px`, background: '#0a0a0a' }}
-              >
-                {tile.img && (
-                  <img
-                    src={tile.img}
-                    alt={tile.name}
-                    loading="lazy"
-                    decoding="async"
-                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                  />
-                )}
-                {tile.video && (
-                  <video
-                    autoPlay muted loop playsInline preload="none"
-                    src={tile.video}
-                    style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                  />
-                )}
-                <div className="ia-mc-veil" />
-                <div className="ia-mc-shine" />
-                <div style={{ position: 'absolute', left: '14px', right: '14px', bottom: '14px' }}>
-                  <div style={{ fontSize: '13px', fontWeight: 600, color: '#fff', letterSpacing: '.01em', marginBottom: '2px' }}>
-                    {tile.name}
+          {/* Heading — left-aligned, two-tone, matches WhatYoullGet style */}
+          <header className="ia-cc-head">
+            <SectionHeading
+              headline="Community"
+              accent="Creations"
+              lineBreakBeforeAccent
+              accentColor="gray"
+              align="left"
+              size="lg"
+              eyebrow="SHOWCASE"
+              subline="Work made by our partners across the globe. Real creatives using ImagineArt to push what's possible."
+            />
+          </header>
+
+          {/* Gallery strip */}
+          <div className="ia-cc-track-wrap">
+
+            {/* Floating click hint — pointer-events:none so it doesn't block shots */}
+            <div className="ia-cc-hint" aria-hidden="true">
+              <span className="ia-cc-hint-plus">+</span>
+              <span className="ia-cc-hint-label">Click any shot to expand</span>
+            </div>
+
+            {/*
+             * Moving track — width:max-content so scrollWidth reflects true
+             * content width.  x motion value drives horizontal translation.
+             */}
+            <motion.div
+              ref={trackRef}
+              className="ia-cc-track"
+              style={passive ? undefined : { x }}
+            >
+              {tiles.map((tile, i) => (
+                <button
+                  key={i}
+                  className="ia-cc-shot"
+                  onClick={() => setLbIdx(i)}
+                  aria-label={`Expand ${tile.name}`}
+                >
+                  {tile.img && (
+                    <img
+                      src={tile.img}
+                      alt={tile.name}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
+                  {tile.video && (
+                    <video
+                      src={tile.video}
+                      autoPlay muted loop playsInline preload="none"
+                    />
+                  )}
+                  <div className="ia-cc-credit">
+                    <span className="ia-cc-credit-name">{tile.name}</span>
+                    <span className="ia-cc-credit-handle">{tile.handle}</span>
                   </div>
-                  <div style={{ fontSize: '11px', color: 'rgba(255,255,255,.55)', letterSpacing: '.02em' }}>
-                    {tile.handle}
-                  </div>
-                </div>
-              </div>
-            ))}
+                </button>
+              ))}
+            </motion.div>
           </div>
-        </div>
 
-        {/* Left edge fade */}
-        <div className="ia-mc-fade-l" style={{ position: 'absolute', left: '-40px', top: 0, bottom: 0, background: 'linear-gradient(to right, var(--clr-bg) 48%, transparent)', pointerEvents: 'none', zIndex: 10 }} />
-        {/* Right edge fade */}
-        <div className="ia-mc-fade-r" style={{ position: 'absolute', right: '-40px', top: 0, bottom: 0, background: 'linear-gradient(to left, var(--clr-bg) 48%, transparent)', pointerEvents: 'none', zIndex: 10 }} />
+          {/* Progress — counter + segmented bar; hidden in passive layout */}
+          {!passive && (
+            <div
+              className="ia-cc-progress"
+              role="progressbar"
+              aria-valuenow={activeIdx + 1}
+              aria-valuemax={tiles.length}
+              aria-label="Gallery progress"
+            >
+              <span className="ia-cc-counter">{activeIdx + 1} / {tiles.length}</span>
+              <div className="ia-cc-segs">
+                {tiles.map((_, i) => (
+                  <span
+                    key={i}
+                    className={`ia-cc-seg${i === activeIdx ? ' on' : i < activeIdx ? ' done' : ''}`}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+        </div>
       </div>
-    </section>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lbIdx !== null && activeTile && (
+          <motion.div
+            className="ia-cc-lb"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.22 }}
+            onClick={() => setLbIdx(null)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Expanded view: ${activeTile.name}`}
+          >
+            <motion.div
+              className="ia-cc-lb-media"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {activeTile.img && (
+                <img src={activeTile.img} alt={activeTile.name} />
+              )}
+              {activeTile.video && (
+                <video src={activeTile.video} autoPlay muted loop playsInline />
+              )}
+              <div className="ia-cc-lb-cred">
+                <span className="ia-cc-credit-name">{activeTile.name}</span>
+                <span className="ia-cc-credit-handle">{activeTile.handle}</span>
+              </div>
+            </motion.div>
+            <button
+              className="ia-cc-lb-close"
+              onClick={() => setLbIdx(null)}
+              aria-label="Close lightbox"
+            >
+              ✕
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   )
 }

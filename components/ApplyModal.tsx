@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import BorderMagicBtn from '@/components/ui/border-magic-btn'
 
 declare global {
   interface Window {
@@ -235,39 +236,23 @@ export default function ApplyModal() {
           </div>
         </div>
 
-        {/* CTAs */}
-        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-          <button
-            onClick={() => {
-              setOpen(false)
-              setTimeout(() => {
-                window.Tally?.openPopup('mB8Dqe', {
-                  layout: 'modal',
-                  width: 700,
-                  overlay: true,
-                  animateClose: true,
-                })
-              }, 200)
-            }}
-            style={{
-              width: '100%',
-              display: 'inline-flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '14.5px',
-              fontWeight: 500,
-              cursor: 'pointer',
-              border: 'none',
-              color: 'var(--clr-btn-dark-fg)',
-              background: 'var(--clr-btn-dark-bg)',
-              padding: '13px 24px',
-              borderRadius: '999px',
-              textAlign: 'center',
-            }}
-          >
-            Apply Now
-          </button>
-        </div>
+        {/* CTA */}
+        <BorderMagicBtn
+          fullWidth
+          onClick={() => {
+            setOpen(false)
+            setTimeout(() => {
+              window.Tally?.openPopup('mB8Dqe', {
+                layout: 'modal',
+                width: 700,
+                overlay: true,
+                animateClose: true,
+              })
+            }, 200)
+          }}
+        >
+          Apply Now
+        </BorderMagicBtn>
       </div>
       </div>
     </>

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { NoiseBackground } from '@/components/ui/noise-background'
+import BorderMagicBtn from '@/components/ui/border-magic-btn'
 
 function WordReveal({ text, baseDelay = 0 }: { text: string; baseDelay?: number }) {
   const words = text.split(' ')
@@ -104,24 +104,7 @@ export default function Hero() {
         </p>
 
         <div style={{ animation: 'ia-pop-in 0.7s cubic-bezier(.16,1,.3,1) 1s both' }}>
-          <NoiseBackground gradientColors={['#8A3FFC', '#C8AAFF', '#F9B8D4', '#FFD4A8', '#ffffff']}>
-            <a
-              href="#apply"
-              style={{
-                display: 'inline-block',
-                fontSize: '16px',
-                fontWeight: 600,
-                textDecoration: 'none',
-                color: '#161616',
-                background: '#fff',
-                padding: '15px 42px',
-                borderRadius: '999px',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              Join Now
-            </a>
-          </NoiseBackground>
+          <BorderMagicBtn href="#apply">Join Now</BorderMagicBtn>
         </div>
       </div>
 

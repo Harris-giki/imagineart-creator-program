@@ -21,15 +21,30 @@ export function CardContainer({
   style?: React.CSSProperties
   className?: string
 }) {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef  = useRef<HTMLDivElement>(null)
   const [isMouseEntered, setIsMouseEntered] = useState(false)
+  // Checked once on mount — avoids per-pointermove media query calls
+  const fineRef   = useRef(false)
+  const reduceRef = useRef(false)
+
+  useEffect(() => {
+    fineRef.current   = window.matchMedia('(pointer:fine)').matches
+    reduceRef.current = window.matchMedia('(prefers-reduced-motion:reduce)').matches
+  }, [])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!containerRef.current) return
+    if (!fineRef.current || reduceRef.current || !containerRef.current) return
     const { left, top, width, height } = containerRef.current.getBoundingClientRect()
-    const x = (e.clientX - left - width / 2) / 20
-    const y = (e.clientY - top - height / 2) / 20
+    // Divide by 40 → ~7.5 deg max on a 600 px card — subtle enough that
+    // the visual overhang doesn't clash with neighbouring full-bleed tiles
+    const x = (e.clientX - left - width  / 2) / 40
+    const y = (e.clientY - top  - height / 2) / 40
     containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`
+  }
+
+  const handleMouseEnter = () => {
+    if (!fineRef.current || reduceRef.current) return
+    setIsMouseEntered(true)
   }
 
   const handleMouseLeave = () => {
@@ -40,13 +55,19 @@ export function CardContainer({
 
   return (
     <MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
-      <div style={{ perspective: '1000px', ...style }} className={className}>
+      {/* perspective wrapper — caller controls size/overflow via style prop */}
+      <div style={{ perspective: '1200px', ...style }} className={className}>
         <div
           ref={containerRef}
-          onMouseEnter={() => setIsMouseEntered(true)}
+          onMouseEnter={handleMouseEnter}
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
-          style={{ transformStyle: 'preserve-3d', transition: 'transform 0.12s ease-out', width: '100%', height: '100%' }}
+          style={{
+            transformStyle: 'preserve-3d',
+            transition: 'transform 0.18s ease-out',
+            width: '100%',
+            height: '100%',
+          }}
         >
           {children}
         </div>
@@ -104,7 +125,7 @@ export function CardItem({
     <Tag
       ref={ref}
       className={className}
-      style={{ transition: 'transform 0.22s ease-out', ...style }}
+      style={{ transition: 'transform 0.28s ease-out', ...style }}
       {...rest}
     >
       {children}

@@ -68,7 +68,7 @@ export default function SectionSparkles({
       <div style={{
         position: 'absolute',
         inset: 0,
-        background: 'var(--clr-bg)',
+        background: '#000',
         WebkitMaskImage: 'radial-gradient(ellipse 55% 100% at 50% 0%, transparent 25%, black 85%)',
         maskImage: 'radial-gradient(ellipse 55% 100% at 50% 0%, transparent 25%, black 85%)',
       }} />

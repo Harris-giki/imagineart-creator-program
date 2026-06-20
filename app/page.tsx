@@ -1,18 +1,18 @@
+import LoadingScreen from '@/components/LoadingScreen'
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
 import WhoItsFor from '@/components/WhoItsFor'
 import WhatYoullGet from '@/components/WhatYoullGet'
 import TopCreators from '@/components/TopCreators'
-import Community from '@/components/Community'
-import StatsBand from '@/components/StatsBand'
-import Enterprise from '@/components/Enterprise'
+import CommunityHub from '@/components/CommunityHub'
 import CommunityCreations from '@/components/CommunityCreations'
 import FAQ from '@/components/FAQ'
 import Footer from '@/components/Footer'
 import ApplyModal from '@/components/ApplyModal'
 export default function Page() {
   return (
-    <main style={{ background: 'var(--clr-bg)', color: 'var(--clr-fg)', overflowX: 'hidden', position: 'relative' }}>
+    <main style={{ background: 'var(--clr-bg)', color: 'var(--clr-fg)', overflowX: 'clip', position: 'relative' }}>
+      <LoadingScreen />
       <Nav />
       <Hero />
 
@@ -31,9 +31,7 @@ export default function Page() {
         <WhoItsFor />
         <WhatYoullGet />
         <TopCreators />
-        <Community />
-        <StatsBand />
-        <Enterprise />
+        <CommunityHub />
         <CommunityCreations />
         <FAQ />
       </div>
