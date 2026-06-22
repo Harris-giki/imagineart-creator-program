@@ -1016,11 +1016,11 @@ html, body {
 
 /* ─── CommunityHub ─── */
 .ia-hub-section {
-  padding: 96px 40px;
+  padding: clamp(64px, 7vh, 96px) clamp(40px, 5vw, 80px);
   background: var(--clr-bg);
 }
 .ia-hub-head {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto 52px;
 }
 .ia-hub-subline {
@@ -1031,11 +1031,11 @@ html, body {
   max-width: 480px;
 }
 .ia-hub-grid {
-  max-width: 1200px;
+  max-width: 1440px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1.55fr 1fr;
-  gap: 16px;
+  gap: clamp(12px, 1.2vw, 20px);
   align-items: stretch;
   isolation: isolate;
 }
@@ -1046,7 +1046,7 @@ html, body {
 }
 .ia-hub-card {
   flex: 1;
-  border-radius: 0;
+  border-radius: 8px;
   border: 1px solid var(--clr-border);
   background: var(--clr-bg-2);
   padding: 28px 28px 32px;
@@ -1126,9 +1126,9 @@ html, body {
 }
 .ia-hub-hero {
   position: relative;
-  border-radius: 0;
+  border-radius: 8px;
   overflow: visible;
-  min-height: 520px;
+  min-height: clamp(460px, 44vh, 620px);
   display: flex;
   align-items: stretch;
   z-index: 1;
@@ -1204,6 +1204,37 @@ html, body {
 }
 
 /* Responsive */
+
+/* ── Large screens (1920px+): bump the container to 1600px, scale content ── */
+@media (min-width: 1920px) {
+  .ia-hub-head,
+  .ia-hub-grid        { max-width: 1600px; }
+
+  .ia-hub-section     { padding: clamp(56px, 5vh, 80px) clamp(40px, 4vw, 80px); }
+  .ia-hub-head        { margin-bottom: 40px; }
+
+  /* Cards: more breathing room, proportional padding */
+  .ia-hub-card        { padding: 34px 32px 38px; gap: 16px; }
+
+  /* Stats: scale numbers and labels */
+  .ia-hub-stat-num    { font-size: clamp(36px, 2.6vw, 48px); }
+  .ia-hub-stat-label  { font-size: 13.5px; margin-top: 6px; }
+  .ia-hub-stats       { gap: 26px; }
+
+  /* Sessions: slightly larger text */
+  .ia-hub-session-label  { font-size: 15px; }
+  .ia-hub-session-detail { font-size: 13px; }
+  .ia-hub-sessions       { gap: 16px; }
+
+  /* Card title, refer, connect */
+  .ia-hub-card-title  { font-size: 17px; }
+  .ia-hub-refer-h3    { font-size: clamp(17px, 1.3vw, 22px); }
+  .ia-hub-refer-body  { font-size: 14.5px; }
+  .ia-hub-eyebrow     { font-size: 11px; }
+
+  /* Hero: grow slightly taller */
+  .ia-hub-hero        { min-height: clamp(500px, 46vh, 640px); }
+}
 @media (max-width: 960px) {
   .ia-hub-section { padding: 64px 24px; }
   .ia-hub-grid {
@@ -1913,13 +1944,15 @@ html.dark .ia-world-map-path {
 
 /* Index list */
 .ia-wyg-index { list-style: none; margin: 0; padding: 0; }
+.ia-wyg-item { display: block; }
 .ia-wyg-row {
   position: relative; display: grid; align-items: center;
   grid-template-columns: 74px 1fr minmax(0, 240px) 44px;
   gap: 24px; padding: 32px 6px;
   border-bottom: 1px solid var(--clr-border);
-  cursor: none;
+  cursor: pointer;
   transition: opacity .45s ease, padding-left .55s cubic-bezier(.16,1,.3,1);
+  user-select: none;
 }
 /* Number — mono eyebrow (design system: font-mono text-[10.5px] font-semibold tracking-[1.8px] uppercase) */
 .ia-wyg-num {
@@ -1969,73 +2002,40 @@ html.dark .ia-world-map-path {
 .ia-wyg-plus::before { width: 26px; height: 1.2px; }
 .ia-wyg-plus::after  { width: 1.2px; height: 26px; }
 
-/* Hover cascade — all accents in purple only */
-.ia-wyg-index:hover .ia-wyg-row                 { opacity: .28; }
-.ia-wyg-row:hover                               { opacity: 1 !important; padding-left: 28px; }
-.ia-wyg-row:hover .ia-wyg-num                   { color: var(--ia-wyg-c); }
-.ia-wyg-row:hover .ia-wyg-title                 { color: var(--ia-wyg-c); transform: translateX(4px); }
-.ia-wyg-row:hover .ia-wyg-eyebrow               { color: var(--ia-wyg-c); }
-.ia-wyg-row:hover .ia-wyg-plus                  { opacity: 1; transform: rotate(90deg); }
-.ia-wyg-row:hover .ia-wyg-plus::before,
-.ia-wyg-row:hover .ia-wyg-plus::after           { background: var(--ia-wyg-c); }
-.ia-wyg-row:focus-visible                       { outline: none; opacity: 1; }
-.ia-wyg-row:focus-visible .ia-wyg-title         { color: var(--ia-wyg-c); }
+/* Click-open accordion cascade — purple accent on open row, dim siblings */
+.ia-wyg-index:has(.open) .ia-wyg-row:not(.open) { opacity: .28; }
+.ia-wyg-row.open                               { opacity: 1 !important; padding-left: 28px; }
+.ia-wyg-row.open .ia-wyg-num                   { color: var(--ia-wyg-c); }
+.ia-wyg-row.open .ia-wyg-title                 { color: var(--ia-wyg-c); transform: translateX(4px); }
+.ia-wyg-row.open .ia-wyg-eyebrow               { color: var(--ia-wyg-c); }
+.ia-wyg-row.open .ia-wyg-plus                  { opacity: 1; transform: rotate(45deg); }
+.ia-wyg-row.open .ia-wyg-plus::before,
+.ia-wyg-row.open .ia-wyg-plus::after           { background: var(--ia-wyg-c); }
+.ia-wyg-row:focus-visible                      { outline: none; opacity: 1; }
+.ia-wyg-row:focus-visible .ia-wyg-title        { color: var(--ia-wyg-c); }
 
-/* Peek card */
-.ia-wyg-peek {
-  position: fixed; top: 0; left: 0; width: 340px; height: 430px; z-index: 40;
-  transform: translate(-50%,-50%) scale(.86); opacity: 0; pointer-events: none;
-  border-radius: 16px; overflow: hidden;
-  transition: opacity .4s ease, transform .55s cubic-bezier(.16,1,.3,1);
-  box-shadow: 0 40px 90px -30px rgba(0,0,0,.9); will-change: transform, opacity;
+/* Drawer — max-height accordion */
+.ia-wyg-drawer {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .5s cubic-bezier(.16,1,.3,1), padding .5s cubic-bezier(.16,1,.3,1);
+  padding: 0 6px;
+  border-bottom: 1px solid var(--clr-border);
 }
-.ia-wyg-peek.on                { opacity: 1; transform: translate(-50%,-50%) scale(1); }
-.ia-wyg-peek canvas            { width: 100%; height: 100%; display: block; }
-.ia-wyg-pcap {
-  position: absolute; left: 14px; bottom: 12px; right: 14px;
-  display: flex; justify-content: space-between;
-  font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
-  color: #fff; mix-blend-mode: difference;
-  font-family: ui-monospace, 'SF Mono', Menlo, Monaco, Consolas, monospace;
+.ia-wyg-drawer.open {
+  max-height: 220px;
+  padding: 20px 6px 28px;
 }
-.ia-wyg-frame {
-  position: absolute; inset: 0;
-  border: 1px solid rgba(255,255,255,.18); border-radius: 16px; pointer-events: none;
-}
-/* Peek card text content */
-.ia-wyg-peek-gradient {
-  position: absolute; bottom: 0; left: 0; right: 0; height: 65%;
-  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.55) 50%, transparent 100%);
-  pointer-events: none;
-}
-.ia-wyg-peek-content {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  padding: 22px 20px 20px; pointer-events: none;
-}
-/* Peek card text — design system: heading-xs (20px) semibold + body-sm (14px) regular */
-.ia-wyg-peek-title {
-  margin: 0 0 8px; font-size: 18px; font-weight: 600; line-height: 1.2;
-  letter-spacing: -0.015em; color: #fff;
+.ia-wyg-drawer-title {
+  margin: 0 0 10px; font-size: 18px; font-weight: 600; line-height: 1.2;
+  letter-spacing: -0.015em; color: var(--ia-wyg-c);
   font-family: 'Google Sans Flex', 'Inter', system-ui, sans-serif;
 }
-.ia-wyg-peek-body {
-  margin: 0; font-size: 13px; line-height: 1.7; letter-spacing: -0.005em;
-  color: rgba(255,255,255,0.62);
+.ia-wyg-drawer-body {
+  margin: 0; font-size: 15px; line-height: 1.7; letter-spacing: -0.005em;
+  color: var(--clr-fg-2);
   font-family: 'Google Sans Flex', 'Inter', system-ui, sans-serif;
 }
-
-/* Custom cursor */
-.ia-wyg-cur {
-  position: fixed; top: 0; left: 0; z-index: 59; pointer-events: none;
-  transform: translate(-50%,-50%);
-  font-family: ui-monospace, 'SF Mono', Menlo, Monaco, Consolas, monospace;
-  font-size: 9px; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--clr-bg); background: var(--clr-fg);
-  width: 52px; height: 52px; border-radius: 50%;
-  display: grid; place-items: center; opacity: 0;
-  transition: opacity .3s; mix-blend-mode: difference;
-}
-.ia-wyg-cur.on { opacity: 1; }
 
 /* Footer hint — mono eyebrow */
 .ia-wyg-foot {
@@ -2057,7 +2057,7 @@ html.dark .ia-world-map-path {
   .ia-wyg-cat   { grid-area: cat; display: block; margin-top: 6px; }
   .ia-wyg-plus  { grid-area: plus; display: block; align-self: center; }
   .ia-wyg-deck  { flex-direction: column; align-items: flex-start; }
-  .ia-wyg-peek, .ia-wyg-cur { display: none; }
+  .ia-wyg-drawer.open { max-height: 280px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ia-wyg-dot { animation: none; }

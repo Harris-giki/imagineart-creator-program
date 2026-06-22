@@ -1,7 +1,9 @@
+import BorderMagicBtn from '@/components/ui/border-magic-btn'
+
 export default function ApplyCTA() {
   return (
     <section
-      id="apply"
+      id="apply-cta"
       style={{
         position: 'relative',
         padding: '120px 40px',
@@ -63,22 +65,9 @@ export default function ApplyCTA() {
         >
           20K credits on day one. Start making, sharing, and earning from your work with ImagineArt.
         </p>
-        <a
-          className="ia-btn-dark"
-          href="#"
-          style={{
-            display: 'inline-block',
-            fontSize: '16px',
-            fontWeight: 600,
-            textDecoration: 'none',
-            color: '#fff',
-            background: '#0F0F0F',
-            padding: '16px 38px',
-            borderRadius: '999px',
-          }}
-        >
-          Apply now
-        </a>
+        <div className="ia-bm-wrap">
+          <BorderMagicBtn href="#apply">Apply now</BorderMagicBtn>
+        </div>
       </div>
     </section>
   )

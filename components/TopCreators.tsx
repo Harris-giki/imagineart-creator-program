@@ -23,16 +23,16 @@ const creators = [
 // dx: fraction of vw from center, dy: fraction of vh from center
 // start/end: scrollYProgress range when this avatar animates toward center
 const SCATTER = [
-  { dx:  0.37, dy: -0.24, size: 96,  rotate: -6,  start: 0.00, end: 0.40 },
-  { dx: -0.34, dy: -0.26, size: 82,  rotate:  5,  start: 0.05, end: 0.45 },
-  { dx: -0.42, dy:  0.12, size: 72,  rotate: -4,  start: 0.10, end: 0.50 },
-  { dx:  0.36, dy:  0.17, size: 90,  rotate:  8,  start: 0.15, end: 0.55 },
-  { dx: -0.18, dy: -0.35, size: 66,  rotate: -7,  start: 0.20, end: 0.60 },
-  { dx:  0.22, dy:  0.33, size: 78,  rotate:  3,  start: 0.25, end: 0.65 },
-  { dx:  0.44, dy: -0.09, size: 64,  rotate: -5,  start: 0.30, end: 0.70 },
-  { dx: -0.29, dy:  0.30, size: 74,  rotate:  6,  start: 0.35, end: 0.75 },
-  { dx:  0.13, dy: -0.40, size: 58,  rotate: -3,  start: 0.40, end: 0.82 },
-  { dx: -0.10, dy:  0.40, size: 86,  rotate:  4,  start: 0.45, end: 0.88 },
+  { dx:  0.37, dy: -0.24, size: 168, rotate: -6,  start: 0.00, end: 0.40 },
+  { dx: -0.34, dy: -0.26, size: 144, rotate:  5,  start: 0.05, end: 0.45 },
+  { dx: -0.42, dy:  0.12, size: 126, rotate: -4,  start: 0.10, end: 0.50 },
+  { dx:  0.36, dy:  0.17, size: 156, rotate:  8,  start: 0.15, end: 0.55 },
+  { dx: -0.18, dy: -0.35, size: 116, rotate: -7,  start: 0.20, end: 0.60 },
+  { dx:  0.22, dy:  0.33, size: 136, rotate:  3,  start: 0.25, end: 0.65 },
+  { dx:  0.44, dy: -0.09, size: 112, rotate: -5,  start: 0.30, end: 0.70 },
+  { dx: -0.29, dy:  0.30, size: 132, rotate:  6,  start: 0.35, end: 0.75 },
+  { dx:  0.13, dy: -0.40, size: 102, rotate: -3,  start: 0.40, end: 0.82 },
+  { dx: -0.10, dy:  0.40, size: 148, rotate:  4,  start: 0.45, end: 0.88 },
 ]
 
 function AvatarBubble({
@@ -115,12 +115,28 @@ function AvatarBubble({
   )
 }
 
+function getPassive() {
+  if (typeof window === 'undefined') return false
+  return (
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+    window.matchMedia('(pointer: coarse)').matches
+  )
+}
+
 export default function TopCreators() {
   const outerRef = useRef<HTMLDivElement>(null)
-  const [ready,   setReady]   = useState(false)
-  const [passive, setPassive] = useState(false)
-  const [outerH,  setOuterH]  = useState(0)
-  const [dims,    setDims]    = useState({ vw: 0, vh: 0 })
+
+  // Lazy-init from window so the FIRST render already has correct dims —
+  // avoids the flash where all avatars stack at center (vw=0, vh=0).
+  const [passive, setPassive] = useState<boolean>(() => getPassive())
+  const [dims,    setDims]    = useState<{ vw: number; vh: number }>(() => ({
+    vw: typeof window !== 'undefined' ? window.innerWidth  : 0,
+    vh: typeof window !== 'undefined' ? window.innerHeight : 0,
+  }))
+  const [outerH,  setOuterH]  = useState<number>(() =>
+    typeof window !== 'undefined' ? window.innerHeight + 1400 : 0
+  )
+  const [ready,   setReady]   = useState<boolean>(() => typeof window !== 'undefined')
   const [showCta, setShowCta] = useState(false)
 
   const measure = useCallback(() => {
@@ -128,23 +144,20 @@ export default function TopCreators() {
     setOuterH(window.innerHeight + 1400)
   }, [])
 
+  // Re-check passive on mount (matchMedia may differ between SSR guess and real browser)
+  // and wire up the resize listener.
   useEffect(() => {
-    const noMotion  = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const coarsePtr = window.matchMedia('(pointer: coarse)').matches
-    const isPassive = noMotion || coarsePtr
-    setPassive(isPassive)
-    if (!isPassive) {
-      setDims({ vw: window.innerWidth, vh: window.innerHeight })
-      setOuterH(window.innerHeight + 1400)
-    }
+    const p = getPassive()
+    setPassive(p)
+    if (!p) measure()
     setReady(true)
-  }, [])
+  }, [measure])
 
   useEffect(() => {
-    if (!ready || passive) return
+    if (passive) return
     window.addEventListener('resize', measure, { passive: true })
     return () => window.removeEventListener('resize', measure)
-  }, [ready, passive, measure])
+  }, [passive, measure])
 
   // useScroll target is outerRef — ALWAYS rendered below so the ref is always attached.
   // If we ever returned null or a different element, Framer Motion would track the wrong
@@ -188,7 +201,7 @@ export default function TopCreators() {
               {creators.map((c, i) => (
                 <a key={i} href={c.url} target="_blank" rel="noopener noreferrer"
                   style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', textDecoration: 'none' }}>
-                  <div style={{ width: '88px', height: '88px', borderRadius: '50%', overflow: 'hidden', border: '1.5px solid rgba(138,63,252,0.25)' }}>
+                  <div style={{ width: '156px', height: '156px', borderRadius: '50%', overflow: 'hidden', border: '1.5px solid rgba(138,63,252,0.25)' }}>
                     <img src={c.img} alt={c.name} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                   </div>
                   <div>
