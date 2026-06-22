@@ -727,8 +727,28 @@ html, body {
   padding: 52px 14px 14px;
   background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 100%);
   display: flex;
-  flex-direction: column;
-  gap: 3px;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+}
+.ia-cc-lb-link {
+  flex-shrink: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  padding: 7px 14px;
+  border: 1px solid rgba(255,255,255,0.28);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+.ia-cc-lb-link:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.5);
 }
 .ia-cc-lb-close {
   position: absolute;

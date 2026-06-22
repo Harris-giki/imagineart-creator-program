@@ -219,8 +219,19 @@ export default function CommunityCreations() {
                 <video src={activeTile.video} autoPlay muted loop playsInline />
               )}
               <div className="ia-cc-lb-cred">
-                <span className="ia-cc-credit-name">{activeTile.name}</span>
-                <span className="ia-cc-credit-handle">{activeTile.handle}</span>
+                <div>
+                  <span className="ia-cc-credit-name">{activeTile.name}</span>
+                  <span className="ia-cc-credit-handle">{activeTile.handle}</span>
+                </div>
+                <a
+                  href={activeTile.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ia-cc-lb-link"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  View on ImagineArt →
+                </a>
               </div>
             </motion.div>
             <button
